@@ -1,9 +1,9 @@
 ﻿using System;
 using Sakamoto.TCC2.CSU.Domain.Core.Models;
-using Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects;
-using Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects.Enums;
+using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
+using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects.Enums;
 
-namespace Sakamoto.TCC2.CSU.Patient.Domain.Models
+namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 {
     public class Patient : Entity
     {
@@ -26,7 +26,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Domain.Models
 
             public Builder(Guid id)
             {
-                _patient = new Patient {Id = id};
+                _patient = new Patient { Id = id };
             }
 
             public Builder Named(string fullName)
@@ -50,12 +50,6 @@ namespace Sakamoto.TCC2.CSU.Patient.Domain.Models
             public Builder WithGender(Gender gender)
             {
                 _patient.Gender = gender;
-                return this;
-            }
-
-            public Builder WithCpf(string cpf)
-            {
-                _patient.Cpf = new CPF(cpf);
                 return this;
             }
 

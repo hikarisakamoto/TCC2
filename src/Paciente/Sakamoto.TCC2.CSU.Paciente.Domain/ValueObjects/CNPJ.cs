@@ -1,6 +1,6 @@
 ﻿using Sakamoto.TCC2.CSU.Domain.Core.Models;
 
-namespace Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects
+namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
     public class CNPJ: ValueObject<CNPJ>
     {

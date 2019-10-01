@@ -1,6 +1,6 @@
 ﻿using Sakamoto.TCC2.CSU.Domain.Core.Models;
 
-namespace Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects
+namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
     public class Address : ValueObject<Address>
     {
@@ -11,6 +11,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects
         public string Observation { get; private set; }
         public string Street { get; private set; }
         public string City { get; private set; }
+        public string Number { get; private set; }
         public string District { get; private set; }
         public string State { get; private set; }
         public string PostalCode { get; private set; }
@@ -28,6 +29,12 @@ namespace Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects
             public Builder InCityOf(string city)
             {
                 _address.City = city;
+                return this;
+            }
+
+            public Builder WithNumber(string number)
+            {
+                _address.Number = number;
                 return this;
             }
 

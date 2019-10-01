@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Sakamoto.TCC2.CSU.Patient.Domain.ValueObjects.Enums
+namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects.Enums
 {
     public enum Gender
     {

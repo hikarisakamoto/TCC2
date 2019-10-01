@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - Infrastructure", "3.2 - Infrastructure", "{E3709F44-C5B3-4EBD-98D2-69BB4F1D4681}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patient.Domain", "src\Paciente\Sakamoto.TCC2.CSU.Paciente.Domain\Sakamoto.TCC2.CSU.Patient.Domain.csproj", "{585C76E8-8C87-4D2F-A1EA-781548CDB502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patients.Domain", "src\Paciente\Sakamoto.TCC2.CSU.Paciente.Domain\Sakamoto.TCC2.CSU.Patients.Domain.csproj", "{585C76E8-8C87-4D2F-A1EA-781548CDB502}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Paciente.Tests", "tests\Paciente\Sakamoto.TCC2.CSU.Paciente.Tests\Sakamoto.TCC2.CSU.Paciente.Tests.csproj", "{E5D25421-3A2F-467A-BA85-8A7BBD982F29}"
 EndProject
