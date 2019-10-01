@@ -4,17 +4,17 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
     public class CPF : ValueObject<CPF>
     {
-        public string Cpf { get; private set; }
-
         public CPF(string cpf)
         {
             Cpf = cpf;
         }
 
+        public string Cpf { get; private set; }
+
         public bool IsValid()
         {
-            var multiplier1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            var multiplier2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplier1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplier2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
             Cpf = Cpf.Trim().Replace(".", "").Replace("-", "");
             if (Cpf.Length != 11)
@@ -27,7 +27,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
             var hasCpj = Cpf.Substring(0, 9);
             var sum = 0;
 
-            for (int i = 0; i < 9; i++)
+            for (var i = 0; i < 9; i++)
                 sum += int.Parse(hasCpj[i].ToString()) * multiplier1[i];
 
             var rest = sum % 11;

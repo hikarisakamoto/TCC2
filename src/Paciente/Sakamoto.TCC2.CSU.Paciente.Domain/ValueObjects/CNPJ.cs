@@ -2,19 +2,19 @@
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
-    public class CNPJ: ValueObject<CNPJ>
+    public class CNPJ : ValueObject<CNPJ>
     {
-        public string Cnpj { get; private set; }
-
         public CNPJ(string cnpj)
         {
             Cnpj = cnpj;
         }
 
+        public string Cnpj { get; private set; }
+
         public bool IsValid()
         {
-            var multiplier1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            var multiplier2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplier1 = new int[12] {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplier2 = new int[13] {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
 
             Cnpj = Cnpj.Trim().Replace(".", "").Replace("-", "").Replace("/", "");
             if (Cnpj.Length != 14)
@@ -26,7 +26,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
             for (var i = 0; i < 12; i++)
                 sum += int.Parse(hasCnpj[i].ToString()) * multiplier1[i];
 
-            var rest = (sum % 11);
+            var rest = sum % 11;
             if (rest < 2)
                 rest = 0;
             else
@@ -38,7 +38,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
             for (var i = 0; i < 13; i++)
                 sum += int.Parse(hasCnpj[i].ToString()) * multiplier2[i];
 
-            rest = (sum % 11);
+            rest = sum % 11;
             if (rest < 2)
                 rest = 0;
             else

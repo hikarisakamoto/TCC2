@@ -4,7 +4,7 @@ using System.Linq;
 namespace Sakamoto.TCC2.CSU.Domain.Core.Models
 {
     public abstract class ValueObject<TValueObject> : IEquatable<TValueObject>
-           where TValueObject : ValueObject<TValueObject>
+        where TValueObject : ValueObject<TValueObject>
     {
         public bool Equals(TValueObject other)
         {
@@ -18,21 +18,16 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
             var publicProperties = GetType().GetProperties();
 
             if (!(publicProperties != null
-                &&
-                publicProperties.Any()))
-            {
+                  &&
+                  publicProperties.Any()))
                 return true;
-            }
 
             return publicProperties.All(pp =>
             {
                 var left = pp.GetValue(this, null);
                 var right = pp.GetValue(other, null);
 
-                if (!typeof(TValueObject).IsAssignableFrom(left.GetType()))
-                {
-                    return left.Equals(right);
-                }
+                if (!typeof(TValueObject).IsAssignableFrom(left.GetType())) return left.Equals(right);
 
                 // Check not self-references...
                 return ReferenceEquals(left, right);
@@ -49,39 +44,37 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
 
             if (item == null) return false;
 
-            return Equals((TValueObject)item);
+            return Equals((TValueObject) item);
         }
 
         public override int GetHashCode()
         {
             var hashCode = 31;
             var changeMultiplier = false;
-            var index = 1;
+            const int index = 1;
 
             // Compare all public proprieties
             var publicProperties = GetType().GetProperties();
 
             if (publicProperties != null
-              &&
-              publicProperties.Any())
-            {
-
+                &&
+                publicProperties.Any())
                 foreach (var property in publicProperties)
                 {
-                    object value = property.GetValue(this, null);
+                    var value = property.GetValue(this, null);
 
                     if (value != null)
                     {
-                        hashCode = hashCode * ((changeMultiplier) ? 59 : 114) + value.GetHashCode();
+                        hashCode = hashCode * (changeMultiplier ? 59 : 114) + value.GetHashCode();
                         changeMultiplier = !changeMultiplier;
                     }
                     else
                     {
                         // Only for support {"a",null,null,"a"} <> {null,"a","a",null}
-                        hashCode ^= (index * 13);
+                        hashCode ^= index * 13;
                     }
                 }
-            }
+
             return hashCode;
         }
 

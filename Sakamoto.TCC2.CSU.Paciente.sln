@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain.Core", "Domain.Core", "{82A22A5B-3EA0-4384-AADC-1D4B987548BE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pacient", "Pacient", "{2904454C-F0DD-447F-9943-407A8F7BEA51}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PatientAggregate", "PatientAggregate", "{2904454C-F0DD-447F-9943-407A8F7BEA51}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Tests", "0 - Tests", "{6FA350D0-C70A-4912-A481-C22431730262}"
 EndProject

@@ -33,7 +33,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
                 .WithEmail("test@test.com")
                 .WhichIsActive()
                 .ThatLivesIn(address)
-                .WithPhoto(new byte[] { 0x00, 0x01, 0x02, 0x03 })
+                .WithPhoto(new byte[] {0x00, 0x01, 0x02, 0x03})
                 .Build();
 
             // Assert
@@ -73,7 +73,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
                 .WithEmail("test@test.com")
                 .WhichIsInactive()
                 .ThatLivesIn(address)
-                .WithPhoto(new byte[] { 0x00, 0x01, 0x02, 0x03 })
+                .WithPhoto(new byte[] {0x00, 0x01, 0x02, 0x03})
                 .Build();
 
             // Assert
