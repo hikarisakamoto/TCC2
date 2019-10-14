@@ -34,17 +34,19 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
                 .WhichIsActive()
                 .ThatLivesIn(address)
                 .WithPhoto(new byte[] { 0x00, 0x01, 0x02, 0x03 })
+                .WithPhone("555-5555")
                 .Build();
 
             // Assert
             Assert.Equal("Johnny Bravo", patient.FullName);
-            Assert.Equal("58554143027", patient.Cpf.Cpf);
+            Assert.Equal("58554143027", patient.Cpf.Value);
             Assert.Equal(new DateTime(1988, 09, 09), patient.BirthDate);
             Assert.Equal(Gender.Male, patient.Gender);
             Assert.Equal("test@test.com", patient.Email);
             Assert.NotNull(patient.Address);
             Assert.True(patient.IsActive);
             Assert.NotNull(patient.Photo);
+            Assert.Equal("555-5555", patient.Phone);
         }
 
 
@@ -78,7 +80,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
 
             // Assert
             Assert.Equal("Johnny Bravo", patient.FullName);
-            Assert.Equal("58554143027", patient.Cpf.Cpf);
+            Assert.Equal("58554143027", patient.Cpf.Value);
             Assert.Equal(new DateTime(1988, 09, 09), patient.BirthDate);
             Assert.Equal(Gender.Male, patient.Gender);
             Assert.Equal("test@test.com", patient.Email);

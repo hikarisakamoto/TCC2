@@ -19,6 +19,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
         public Address Address { get; private set; }
         public bool IsActive { get; private set; }
         public byte[] Photo { get; private set; }
+        public string Phone { get; private set; }
 
         public class Builder
         {
@@ -26,7 +27,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 
             public Builder(Guid id)
             {
-                _patient = new Patient {Id = id};
+                _patient = new Patient { Id = id };
             }
 
             public Builder Named(string fullName)
@@ -80,6 +81,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
             public Builder WithPhoto(byte[] photo)
             {
                 _patient.Photo = photo;
+                return this;
+            }
+
+            public Builder WithPhone(string phone)
+            {
+                _patient.Phone = phone;
                 return this;
             }
 

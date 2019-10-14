@@ -6,25 +6,25 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
     {
         public CPF(string cpf)
         {
-            Cpf = cpf;
+            Value = cpf;
         }
 
-        public string Cpf { get; private set; }
+        public string Value { get; private set; }
 
         public bool IsValid()
         {
             var multiplier1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
             var multiplier2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
-            Cpf = Cpf.Trim().Replace(".", "").Replace("-", "");
-            if (Cpf.Length != 11)
+            Value = Value.Trim().Replace(".", "").Replace("-", "");
+            if (Value.Length != 11)
                 return false;
 
             for (var j = 0; j < 10; j++)
-                if (j.ToString().PadLeft(11, char.Parse(j.ToString())) == Cpf)
+                if (j.ToString().PadLeft(11, char.Parse(j.ToString())) == Value)
                     return false;
 
-            var hasCpj = Cpf.Substring(0, 9);
+            var hasCpj = Value.Substring(0, 9);
             var sum = 0;
 
             for (var i = 0; i < 9; i++)
@@ -50,7 +50,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 
             digit += rest.ToString();
 
-            return Cpf.EndsWith(digit);
+            return Value.EndsWith(digit);
         }
     }
 }
