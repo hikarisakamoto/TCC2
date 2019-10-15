@@ -18,8 +18,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
             Gender = gender;
             Cpf = new CPF(cpf);
             Phone = phone;
-
-            //AggregateId = Id;
         }
 
         public override bool IsValid()
@@ -28,6 +26,4 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
             return ValidationResult.IsValid;
         }
     }
-
-
 }

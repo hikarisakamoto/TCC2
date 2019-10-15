@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
+using FluentValidation.Results;
 
 namespace Sakamoto.TCC2.CSU.Domain.Core.Models
 {
     public abstract class ValueObject<TValueObject> : IEquatable<TValueObject>
         where TValueObject : ValueObject<TValueObject>
     {
+        public ValidationResult ValidationResult { get; protected set; }
+
         public bool Equals(TValueObject other)
         {
             if (other == null)
@@ -33,6 +36,8 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
                 return ReferenceEquals(left, right);
             });
         }
+
+        public abstract bool IsValid();
 
         public override bool Equals(object obj)
         {

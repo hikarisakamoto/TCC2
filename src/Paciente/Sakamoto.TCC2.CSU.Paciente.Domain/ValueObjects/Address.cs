@@ -1,4 +1,5 @@
 ﻿using Sakamoto.TCC2.CSU.Domain.Core.Models;
+using Sakamoto.TCC2.CSU.Patients.Domain.Validations;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
@@ -15,6 +16,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
         public string District { get; private set; }
         public string State { get; private set; }
         public string PostalCode { get; private set; }
+
+        public override bool IsValid()
+        {
+            ValidationResult = new AddressValidation().Validate(this);
+            return ValidationResult.IsValid;
+        }
 
         public class Builder
         {
@@ -43,7 +50,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
                 _address.District = district;
                 return this;
             }
-
 
             public Builder InTheState(string state)
             {

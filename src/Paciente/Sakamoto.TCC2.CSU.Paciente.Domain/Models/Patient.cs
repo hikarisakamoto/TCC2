@@ -27,7 +27,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 
             public Builder(Guid id)
             {
-                _patient = new Patient { Id = id };
+                _patient = new Patient {Id = id};
             }
 
             public Builder Named(string fullName)

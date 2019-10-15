@@ -4,7 +4,9 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Events
 {
     public class StoredEvent : Event
     {
-        protected StoredEvent() { }
+        protected StoredEvent()
+        {
+        }
 
         public StoredEvent(Event @event, string data, string user)
         {
@@ -14,8 +16,10 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Events
             Data = data;
             User = user;
         }
+
         public Guid Id { get; }
         public string Data { get; }
+
         public string User { get; }
         // TODO ADD PROPRIETIES THAT MAKE SENSE TO ADD IN THE EVENT STORE (EVENT SOURCING)
     }

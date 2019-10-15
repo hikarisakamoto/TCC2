@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using MediatR;
+﻿using MediatR;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Domain.Core.Commands;
 using Sakamoto.TCC2.CSU.Domain.Core.Notifications;
@@ -9,23 +8,22 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
 {
     public class CommandHandler
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IMediatorHandler _bus;
         private readonly DomainNotificationHandler _domainNotifications;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus, INotificationHandler<DomainNotification> domainNotifications)
+        public CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
+            INotificationHandler<DomainNotification> domainNotifications)
         {
             _unitOfWork = unitOfWork;
             _bus = bus;
-            _domainNotifications = (DomainNotificationHandler)domainNotifications;
+            _domainNotifications = (DomainNotificationHandler) domainNotifications;
         }
 
         protected void NotifyValidationErrors(Command message)
         {
             foreach (var error in message.ValidationResult.Errors)
-            {
                 _bus.RaiseEvent(new DomainNotification(message.MessageType, error.ErrorMessage));
-            }
         }
 
         public bool Commit()

@@ -11,6 +11,11 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Notifications
     {
         private ICollection<DomainNotification> _notifications;
 
+        public void Dispose()
+        {
+            _notifications = new List<DomainNotification>();
+        }
+
         public Task Handle(DomainNotification notification, CancellationToken cancellationToken)
         {
             _notifications.Add(notification);
@@ -26,11 +31,6 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Notifications
         public virtual bool HasNotifications()
         {
             return GetNotifications().Any();
-        }
-
-        public void Dispose()
-        {
-            _notifications = new List<DomainNotification>();
         }
     }
 }

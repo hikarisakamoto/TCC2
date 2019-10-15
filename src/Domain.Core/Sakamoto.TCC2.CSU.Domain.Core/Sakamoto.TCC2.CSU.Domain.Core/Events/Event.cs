@@ -10,6 +10,6 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Events
             TimeStamp = DateTime.Now;
         }
 
-        public DateTime TimeStamp { get; private set; }
+        public DateTime TimeStamp { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 
         public string Value { get; private set; }
 
-        public bool IsValid()
+        public override bool IsValid()
         {
             var multiplier1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
             var multiplier2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
