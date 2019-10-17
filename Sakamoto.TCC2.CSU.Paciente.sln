@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BFE9C19A-08B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B2EE8D3E-6672-4B46-8B51-1CA40BA42194}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Patients.Infrastructure.Data", "src\Paciente\Sakamoto.TCC2.CSU.Patients.Infrastructure.Data\Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.csproj", "{E745AD75-0281-4C27-AA4C-715970EB59F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{FC00F2E7-1D5E-4BEE-9275-DA3AC55AB917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC00F2E7-1D5E-4BEE-9275-DA3AC55AB917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC00F2E7-1D5E-4BEE-9275-DA3AC55AB917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E745AD75-0281-4C27-AA4C-715970EB59F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E745AD75-0281-4C27-AA4C-715970EB59F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E745AD75-0281-4C27-AA4C-715970EB59F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E745AD75-0281-4C27-AA4C-715970EB59F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{585C76E8-8C87-4D2F-A1EA-781548CDB502} = {2B33DC8F-4E4C-431B-8160-308C5216F249}
 		{E5D25421-3A2F-467A-BA85-8A7BBD982F29} = {6FA350D0-C70A-4912-A481-C22431730262}
 		{FC00F2E7-1D5E-4BEE-9275-DA3AC55AB917} = {82A22A5B-3EA0-4384-AADC-1D4B987548BE}
+		{E745AD75-0281-4C27-AA4C-715970EB59F1} = {6B1173B6-031F-4F31-A792-7AD8EDDF9458}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C6C7A7B-777F-4063-8B51-90584EB5E22D}
