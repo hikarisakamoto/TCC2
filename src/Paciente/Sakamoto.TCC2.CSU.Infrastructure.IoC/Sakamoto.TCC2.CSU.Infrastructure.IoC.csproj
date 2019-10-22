@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference
+      Include="..\Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus\Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.Paciente.Domain\Sakamoto.TCC2.CSU.Patients.Domain.csproj" />
+    <ProjectReference
+      Include="..\Sakamoto.TCC2.CSU.Patients.Infrastructure.Data\Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>

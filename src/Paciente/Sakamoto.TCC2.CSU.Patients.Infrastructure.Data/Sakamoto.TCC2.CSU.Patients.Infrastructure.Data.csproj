@@ -35,10 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
     <Folder Include="Migrations\" />
-    <Folder Include="UnitOfWork\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>

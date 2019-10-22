@@ -53,6 +53,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 .WithEmail(existingPatient.Email).WithGender(existingPatient.Gender).WithPhone(message.Phone)
                 .WithPhoto(existingPatient.Photo).WhichIsInactive().Build();
 
+            if (!patient.IsValid())
+            {
+                NotifyValidationErrors(patient.ValidationResult);
+                return Task.FromResult(false);
+            }
+
             _patientRepository.Update(patient);
 
             if (Commit())
@@ -79,6 +85,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
             {
                 _bus.RaiseEvent(new DomainNotification(message.MessageType,
                     $"There is already a patient registered with this CPF ({patient.Cpf.Value})"));
+                return Task.FromResult(false);
+            }
+
+            if (!patient.IsValid())
+            {
+                NotifyValidationErrors(patient.ValidationResult);
                 return Task.FromResult(false);
             }
 
@@ -118,6 +130,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 .Named(existingPatient.FullName).ThatLivesIn(message.Address).WithCpf(existingPatient.Cpf)
                 .WithEmail(message.Email).WithGender(existingPatient.Gender).WithPhone(message.Phone)
                 .WithPhoto(message.Photo).WhichIsActive().Build();
+
+            if (!patient.IsValid())
+            {
+                NotifyValidationErrors(patient.ValidationResult);
+                return Task.FromResult(false);
+            }
 
             _patientRepository.Update(patient);
 

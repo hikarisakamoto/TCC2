@@ -1,5 +1,6 @@
 ﻿using System;
 using Sakamoto.TCC2.CSU.Domain.Core.Models;
+using Sakamoto.TCC2.CSU.Patients.Domain.Validations;
 using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects.Enums;
 
@@ -27,7 +28,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 
             public Builder(Guid id)
             {
-                _patient = new Patient {Id = id};
+                _patient = new Patient { Id = id };
             }
 
             public Builder Named(string fullName)
@@ -94,6 +95,13 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
             {
                 return _patient;
             }
+        }
+
+        public override bool IsValid()
+        {
+            ValidationResult = new PatientDomainValidation().Validate(this);
+
+            return ValidationResult.IsValid;
         }
     }
 }

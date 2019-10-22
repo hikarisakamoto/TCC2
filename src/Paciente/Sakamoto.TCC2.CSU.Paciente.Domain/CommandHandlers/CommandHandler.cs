@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation.Results;
+using MediatR;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Domain.Core.Commands;
 using Sakamoto.TCC2.CSU.Domain.Core.Notifications;
@@ -24,6 +25,14 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
         {
             foreach (var error in message.ValidationResult.Errors)
                 _bus.RaiseEvent(new DomainNotification(message.MessageType, error.ErrorMessage));
+        }
+
+        protected void NotifyValidationErrors(ValidationResult validationResult)
+        {
+            foreach (var error in validationResult.Errors)
+            {
+                _bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
+            }
         }
 
         public bool Commit()

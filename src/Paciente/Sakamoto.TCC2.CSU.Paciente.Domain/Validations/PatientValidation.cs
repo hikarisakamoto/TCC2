@@ -20,7 +20,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
                 .LessThanOrEqualTo(DateTime.Now).WithMessage("Please add valid birthdate.");
         }
 
-        protected void ValidadeCpf()
+        protected void ValidateCpf()
         {
             RuleFor(p => p.Cpf)
                 .Must(cpf => cpf.IsValid()).WithMessage("Please insert a valid CPF.");

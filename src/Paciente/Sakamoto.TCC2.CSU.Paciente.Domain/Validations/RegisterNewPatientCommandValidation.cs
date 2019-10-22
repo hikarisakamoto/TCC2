@@ -7,7 +7,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
         public RegisterNewPatientCommandValidation()
         {
             ValidateFullName();
-            ValidadeCpf();
+            ValidateCpf();
             ValidateBirthDate();
             ValidatePhone();
         }

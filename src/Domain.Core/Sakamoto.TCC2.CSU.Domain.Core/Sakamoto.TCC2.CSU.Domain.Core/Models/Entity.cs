@@ -1,10 +1,12 @@
 ﻿using System;
+using FluentValidation.Results;
 
 namespace Sakamoto.TCC2.CSU.Domain.Core.Models
 {
     public abstract class Entity
     {
         public Guid Id { get; protected set; }
+        public ValidationResult ValidationResult { get; protected set; }
 
         public override bool Equals(object obj)
         {
@@ -41,5 +43,7 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
         {
             return GetType().Name + " [ID =" + Id + "]";
         }
+
+        public abstract bool IsValid();
     }
 }
