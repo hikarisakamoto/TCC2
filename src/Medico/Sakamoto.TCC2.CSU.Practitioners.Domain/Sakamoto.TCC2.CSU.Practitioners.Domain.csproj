@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="EventHandlers\" />
+    <Folder Include="Events\" />
+    <Folder Include="ValueObjects\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="FluentValidation" Version="8.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
+  </ItemGroup>
+
+</Project>
