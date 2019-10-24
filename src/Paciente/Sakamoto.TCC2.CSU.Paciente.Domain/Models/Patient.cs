@@ -8,9 +8,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 {
     public class Patient : Entity
     {
-        protected Patient()
-        {
-        }
+        protected Patient() { }
 
         public string FullName { get; private set; }
         public DateTime BirthDate { get; private set; }
@@ -21,6 +19,13 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
         public bool IsActive { get; private set; }
         public byte[] Photo { get; private set; }
         public string Phone { get; private set; }
+
+        public override bool IsValid()
+        {
+            ValidationResult = new PatientDomainValidation().Validate(this);
+
+            return ValidationResult.IsValid;
+        }
 
         public class Builder
         {
@@ -95,13 +100,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
             {
                 return _patient;
             }
-        }
-
-        public override bool IsValid()
-        {
-            ValidationResult = new PatientDomainValidation().Validate(this);
-
-            return ValidationResult.IsValid;
         }
     }
 }

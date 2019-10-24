@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sakamoto.TCC2.CSU.Patients.Domain.Models;
 
-namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context
+namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Mappings
 {
     public class PatientMap : IEntityTypeConfiguration<Patient>
 

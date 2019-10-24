@@ -7,18 +7,8 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Events
 {
     public class PatientDeactivatedEvent : Event
     {
-        public Guid Id { get; }
-        public string FullName { get; }
-        public DateTime BirthDate { get; }
-        public string Cpf { get; }
-        public Gender Gender { get; }
-        public string Email { get; }
-        public string Phone { get; }
-        public byte[] Photo { get; }
-        public Address Address { get; }
-        public bool IsActive { get; }
-
-        public PatientDeactivatedEvent(Guid id, string fullName, DateTime birthDate, string cpf, Gender gender, string email, string phone, byte[] photo, Address address, bool isActive)
+        public PatientDeactivatedEvent(Guid id, string fullName, DateTime birthDate, string cpf, Gender gender,
+            string email, string phone, byte[] photo, Address address, bool isActive)
         {
             Id = id;
             FullName = fullName;
@@ -32,5 +22,16 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Events
             IsActive = isActive;
             AggregateId = id;
         }
+
+        public Guid Id { get; }
+        public string FullName { get; }
+        public DateTime BirthDate { get; }
+        public string Cpf { get; }
+        public Gender Gender { get; }
+        public string Email { get; }
+        public string Phone { get; }
+        public byte[] Photo { get; }
+        public Address Address { get; }
+        public bool IsActive { get; }
     }
 }

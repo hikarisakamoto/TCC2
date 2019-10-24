@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Sakamoto.TCC2.CSU.Patients.Domain.Models;
+using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Mappings;
 
 namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context
 {

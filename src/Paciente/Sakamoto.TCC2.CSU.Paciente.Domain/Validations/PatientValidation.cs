@@ -29,7 +29,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
         protected void ValidateId()
         {
             RuleFor(p => p.Id)
-                .NotEqual(Guid.Empty);
+                .NotEqual(Guid.Empty).WithMessage("Invalid ID.");
         }
 
         protected void ValidatePhone()

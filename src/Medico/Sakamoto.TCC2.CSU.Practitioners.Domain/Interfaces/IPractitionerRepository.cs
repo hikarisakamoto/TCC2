@@ -2,8 +2,7 @@
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces
 {
-    public interface IPractitionerRepository: IRepository<Practitioner>
+    public interface IPractitionerRepository : IRepository<Practitioner>
     {
-        
     }
 }

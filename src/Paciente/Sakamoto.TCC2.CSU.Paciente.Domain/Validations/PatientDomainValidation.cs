@@ -35,7 +35,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
         {
             RuleFor(p => p.Email)
                 .EmailAddress().WithMessage("Please insert a valid email.")
-                .MaximumLength(100).WithMessage("Email must can't have more than 100 characters.");
+                .MaximumLength(100).WithMessage("Email can't have more than 100 characters.");
         }
 
         private void ValidateCpfLength()

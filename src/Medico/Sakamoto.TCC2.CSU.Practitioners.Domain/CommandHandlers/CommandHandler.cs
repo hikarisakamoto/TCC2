@@ -7,7 +7,7 @@ using Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers
 {
-    public class CommandHandler
+    public abstract class CommandHandler
     {
         private readonly IMediatorHandler _bus;
         private readonly DomainNotificationHandler _domainNotifications;
@@ -34,7 +34,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers
                 _bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
         }
 
-        public bool Commit()
+        protected bool Commit()
         {
             if (_domainNotifications.HasNotifications()) return false;
             if (_unitOfWork.Commit()) return true;

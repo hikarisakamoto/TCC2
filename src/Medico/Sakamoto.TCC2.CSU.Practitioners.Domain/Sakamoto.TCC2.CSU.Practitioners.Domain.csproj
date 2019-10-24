@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="EventHandlers\" />
     <Folder Include="Events\" />
-    <Folder Include="ValueObjects\" />
-    <Folder Include="Validations\" />
   </ItemGroup>
 
   <ItemGroup>

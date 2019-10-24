@@ -7,13 +7,13 @@ using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
 {
-    public class CommandHandler
+    public abstract class CommandHandler
     {
         private readonly IMediatorHandler _bus;
         private readonly DomainNotificationHandler _domainNotifications;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
+        protected CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
             INotificationHandler<DomainNotification> domainNotifications)
         {
             _unitOfWork = unitOfWork;
@@ -30,12 +30,10 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
         protected void NotifyValidationErrors(ValidationResult validationResult)
         {
             foreach (var error in validationResult.Errors)
-            {
                 _bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
-            }
         }
 
-        public bool Commit()
+        protected bool Commit()
         {
             if (_domainNotifications.HasNotifications()) return false;
             if (_unitOfWork.Commit()) return true;
