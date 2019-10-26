@@ -18,6 +18,13 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
             return Id.Equals(compareTo.Id);
         }
 
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode() ^ (GetType().GetHashCode() * 907);
+        }
+
+        public abstract bool IsValid();
+
         public static bool operator ==(Entity leftEntity, Entity rightEntity)
         {
             if (ReferenceEquals(leftEntity, null) && ReferenceEquals(rightEntity, null))
@@ -34,16 +41,9 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
             return !(leftEntity == rightEntity);
         }
 
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode() ^ (GetType().GetHashCode() * 907);
-        }
-
         public override string ToString()
         {
             return GetType().Name + " [ID =" + Id + "]";
         }
-
-        public abstract bool IsValid();
     }
 }

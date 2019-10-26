@@ -1,4 +1,7 @@
-﻿namespace Sakamoto.TCC2.CSU.Practitioners.Domain.ValueObjects
+﻿using Sakamoto.TCC2.CSU.Domain.Core.Models;
+using Sakamoto.TCC2.CSU.Practitioners.Domain.Validations;
+
+namespace Sakamoto.TCC2.CSU.Practitioners.Domain.ValueObjects
 {
     public class Address : ValueObject<Address>
     {
@@ -6,13 +9,14 @@
         {
         }
 
-        public string Observation { get; private set; }
-        public string Street { get; private set; }
         public string City { get; private set; }
-        public string Number { get; private set; }
         public string District { get; private set; }
-        public string State { get; private set; }
+        public string Number { get; private set; }
+
+        public string Observation { get; private set; }
         public string PostalCode { get; private set; }
+        public string State { get; private set; }
+        public string Street { get; private set; }
 
         public override bool IsValid()
         {
@@ -24,21 +28,14 @@
         {
             private readonly Address _address = new Address();
 
-            public Builder WithStreet(string street)
+            public Address Build()
             {
-                _address.Street = street;
-                return this;
+                return _address;
             }
 
             public Builder InCityOf(string city)
             {
                 _address.City = city;
-                return this;
-            }
-
-            public Builder WithNumber(string number)
-            {
-                _address.Number = number;
                 return this;
             }
 
@@ -54,9 +51,9 @@
                 return this;
             }
 
-            public Builder WithPostalCode(string postalCode)
+            public Builder WithNumber(string number)
             {
-                _address.PostalCode = postalCode;
+                _address.Number = number;
                 return this;
             }
 
@@ -66,9 +63,16 @@
                 return this;
             }
 
-            public Address Build()
+            public Builder WithPostalCode(string postalCode)
             {
-                return _address;
+                _address.PostalCode = postalCode;
+                return this;
+            }
+
+            public Builder WithStreet(string street)
+            {
+                _address.Street = street;
+                return this;
             }
         }
     }

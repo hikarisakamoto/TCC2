@@ -17,23 +17,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context
 
         public DbSet<Patient> Patients { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new PatientMap());
-            base.OnModelCreating(modelBuilder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Get configurations from the app settings
-            var configuration = new ConfigurationBuilder().SetBasePath(_hostingEnvironment.ContentRootPath)
-                .AddJsonFile("appsettings.json").Build();
-
-            // define the database to use
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-            //base.OnConfiguring(optionsBuilder);
-        }
-
         /// <summary>
         ///     Discard all pending changes.
         /// </summary>
@@ -53,6 +36,23 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context
                         entry.State = EntityState.Detached;
                         break;
                 }
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Get configurations from the app settings
+            var configuration = new ConfigurationBuilder().SetBasePath(_hostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json").Build();
+
+            // define the database to use
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            //base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PatientMap());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

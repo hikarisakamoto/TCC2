@@ -15,8 +15,9 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
             Id = id;
         }
 
-        public string Email { get; }
         public Address Address { get; }
+
+        public string Email { get; }
         public byte[] Photo { get; }
 
         public override bool IsValid()

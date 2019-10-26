@@ -77,6 +77,8 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Mappings
             builder.Property(p => p.Address.Street)
                 .HasColumnType("varchar(255)")
                 .HasMaxLength(255);
+
+            builder.Ignore(p => p.ValidationResult);
         }
     }
 }

@@ -18,17 +18,17 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus
             _eventStore = eventStore;
         }
 
-        public Task SendCommand<T>(T command) where T : Command
-        {
-            return _mediator.Send(command);
-        }
-
         public Task RaiseEvent<T>(T @event) where T : Event
         {
             if (!@event.MessageType.Equals("DomainNotification"))
                 _eventStore?.Save(@event);
 
             return _mediator.Publish(@event);
+        }
+
+        public Task SendCommand<T>(T command) where T : Command
+        {
+            return _mediator.Send(command);
         }
     }
 }

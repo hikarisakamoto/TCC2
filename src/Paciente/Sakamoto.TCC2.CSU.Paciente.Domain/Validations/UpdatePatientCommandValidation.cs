@@ -13,12 +13,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
             ValidatePhoto();
         }
 
-        private void ValidatePhoto()
-        {
-            RuleFor(p => p.Photo)
-                .NotNull().NotEmpty().WithMessage("Please add a picture of the patient for further recognition.");
-        }
-
         private void ValidateAddress()
         {
             RuleFor(p => p.Address).Must(a => a.IsValid()).WithMessage("Address has invalid information.");
@@ -29,6 +23,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
             RuleFor(p => p.Email)
                 .NotEmpty().NotNull().WithMessage("Please fill in an email.")
                 .EmailAddress().WithMessage("Please add a valid email address.");
+        }
+
+        private void ValidatePhoto()
+        {
+            RuleFor(p => p.Photo)
+                .NotNull().NotEmpty().WithMessage("Please add a picture of the patient for further recognition.");
         }
     }
 }

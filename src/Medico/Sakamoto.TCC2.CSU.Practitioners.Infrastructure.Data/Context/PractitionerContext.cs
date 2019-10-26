@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Sakamoto.TCC2.CSU.Practitioners.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Sakamoto.TCC2.CSU.Practitioners.Domain.Models;
 using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Mappings;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context
@@ -18,23 +16,6 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context
         }
 
         public DbSet<Practitioner> Practitioners { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new PractitionerMap());
-            base.OnModelCreating(modelBuilder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Get configurations from the app settings
-            var configuration = new ConfigurationBuilder().SetBasePath(_hostingEnvironment.ContentRootPath)
-                .AddJsonFile("appsettings.json").Build();
-
-            // define the database to use
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-            //base.OnConfiguring(optionsBuilder);
-        }
 
         /// <summary>
         ///     Discard all pending changes.
@@ -57,5 +38,21 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context
                 }
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Get configurations from the app settings
+            var configuration = new ConfigurationBuilder().SetBasePath(_hostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json").Build();
+
+            // define the database to use
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            //base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PractitionerMap());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

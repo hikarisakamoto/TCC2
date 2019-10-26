@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.Domain_Services;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC
 {
@@ -14,6 +15,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC
         /// <returns></returns>
         public static IServiceCollection Register(this IServiceCollection services)
         {
+            DomainService.Register(services);
             return services;
         }
     }

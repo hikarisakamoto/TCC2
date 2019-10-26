@@ -22,6 +22,15 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers
             _domainNotifications = (DomainNotificationHandler) domainNotifications;
         }
 
+        protected bool Commit()
+        {
+            if (_domainNotifications.HasNotifications()) return false;
+            if (_unitOfWork.Commit()) return true;
+
+            _bus.RaiseEvent(new DomainNotification("Commit", "Error commiting your data, please verify."));
+            return false;
+        }
+
         protected void NotifyValidationErrors(Command message)
         {
             foreach (var error in message.ValidationResult.Errors)
@@ -32,15 +41,6 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers
         {
             foreach (var error in validationResult.Errors)
                 _bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
-        }
-
-        protected bool Commit()
-        {
-            if (_domainNotifications.HasNotifications()) return false;
-            if (_unitOfWork.Commit()) return true;
-
-            _bus.RaiseEvent(new DomainNotification("Commit", "Error commiting your data, please verify."));
-            return false;
         }
     }
 }

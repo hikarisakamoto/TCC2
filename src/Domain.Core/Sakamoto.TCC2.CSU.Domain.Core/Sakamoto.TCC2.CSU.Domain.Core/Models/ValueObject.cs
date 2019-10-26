@@ -37,8 +37,6 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
             });
         }
 
-        public abstract bool IsValid();
-
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
@@ -82,6 +80,8 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Models
 
             return hashCode;
         }
+
+        public abstract bool IsValid();
 
         public static bool operator ==(ValueObject<TValueObject> left, ValueObject<TValueObject> right)
         {

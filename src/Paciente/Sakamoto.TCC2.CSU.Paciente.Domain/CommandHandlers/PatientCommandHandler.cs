@@ -62,9 +62,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
             _patientRepository.Update(patient);
 
             if (Commit())
-                _bus.RaiseEvent(new PatientDeactivatedEvent(patient.Id, patient.FullName, patient.BirthDate,
-                    patient.Cpf.Value, patient.Gender, patient.Email, patient.Phone, patient.Photo, patient.Address,
-                    patient.IsActive));
+                _bus.RaiseEvent(new PatientDeactivatedEvent(patient));
 
             return Task.FromResult(true);
         }
@@ -97,8 +95,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
             _patientRepository.Add(patient);
 
             if (Commit())
-                _bus.RaiseEvent(new PatientRegisteredEvent(patient.Id, patient.FullName, patient.BirthDate,
-                    patient.Cpf.Value, patient.Gender, patient.Phone));
+                _bus.RaiseEvent(new PatientRegisteredEvent(patient));
 
             return Task.FromResult(true);
         }
@@ -140,9 +137,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
             _patientRepository.Update(patient);
 
             if (Commit())
-                _bus.RaiseEvent(new PatientUpdatedEvent(patient.Id, patient.FullName, patient.BirthDate,
-                    patient.Cpf.Value, patient.Gender, patient.Email, patient.Phone, patient.Photo, patient.Address,
-                    patient.IsActive));
+                _bus.RaiseEvent(new PatientUpdatedEvent(patient));
 
             return Task.FromResult(true);
         }

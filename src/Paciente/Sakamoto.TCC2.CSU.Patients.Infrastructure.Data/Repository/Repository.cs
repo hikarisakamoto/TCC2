@@ -29,19 +29,14 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
             DbSet.Add(entity);
         }
 
-        public TEntity GetById(Guid id)
-        {
-            return DbSet.Find(id);
-        }
-
         public IQueryable<TEntity> GetAll()
         {
             return DbSet;
         }
 
-        public void Update(TEntity entity)
+        public TEntity GetById(Guid id)
         {
-            DbSet.Update(entity);
+            return DbSet.Find(id);
         }
 
         public void Remove(Guid id)
@@ -52,6 +47,11 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
         public int SaveChanges()
         {
             return Context.SaveChanges();
+        }
+
+        public void Update(TEntity entity)
+        {
+            DbSet.Update(entity);
         }
     }
 }

@@ -10,7 +10,8 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Events
             MessageType = GetType().Name;
         }
 
-        public string MessageType { get; protected set; }
         public Guid AggregateId { get; protected set; }
+
+        public string MessageType { get; protected set; }
     }
 }

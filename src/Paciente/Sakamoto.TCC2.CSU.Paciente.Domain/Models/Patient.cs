@@ -8,17 +8,20 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 {
     public class Patient : Entity
     {
-        protected Patient() { }
+        protected Patient()
+        {
+        }
+
+        public Address Address { get; private set; }
+        public DateTime BirthDate { get; private set; }
+        public CPF Cpf { get; private set; }
+        public string Email { get; private set; }
 
         public string FullName { get; private set; }
-        public DateTime BirthDate { get; private set; }
-        public string Email { get; private set; }
         public Gender Gender { get; private set; }
-        public CPF Cpf { get; private set; }
-        public Address Address { get; private set; }
         public bool IsActive { get; private set; }
-        public byte[] Photo { get; private set; }
         public string Phone { get; private set; }
+        public byte[] Photo { get; private set; }
 
         public override bool IsValid()
         {
@@ -33,13 +36,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 
             public Builder(Guid id)
             {
-                _patient = new Patient { Id = id };
-            }
-
-            public Builder Named(string fullName)
-            {
-                _patient.FullName = fullName;
-                return this;
+                _patient = new Patient {Id = id};
             }
 
             public Builder BornIn(DateTime birthDate)
@@ -48,21 +45,14 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
                 return this;
             }
 
-            public Builder WithEmail(string email)
+            public Patient Build()
             {
-                _patient.Email = email;
-                return this;
+                return _patient;
             }
 
-            public Builder WithGender(Gender gender)
+            public Builder Named(string fullName)
             {
-                _patient.Gender = gender;
-                return this;
-            }
-
-            public Builder WithCpf(CPF cpf)
-            {
-                _patient.Cpf = cpf;
+                _patient.FullName = fullName;
                 return this;
             }
 
@@ -84,9 +74,21 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
                 return this;
             }
 
-            public Builder WithPhoto(byte[] photo)
+            public Builder WithCpf(CPF cpf)
             {
-                _patient.Photo = photo;
+                _patient.Cpf = cpf;
+                return this;
+            }
+
+            public Builder WithEmail(string email)
+            {
+                _patient.Email = email;
+                return this;
+            }
+
+            public Builder WithGender(Gender gender)
+            {
+                _patient.Gender = gender;
                 return this;
             }
 
@@ -96,9 +98,10 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
                 return this;
             }
 
-            public Patient Build()
+            public Builder WithPhoto(byte[] photo)
             {
-                return _patient;
+                _patient.Photo = photo;
+                return this;
             }
         }
     }

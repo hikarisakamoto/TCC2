@@ -17,8 +17,9 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Events
             User = user;
         }
 
-        public Guid Id { get; }
         public string Data { get; }
+
+        public Guid Id { get; }
 
         public string User { get; }
         // TODO ADD PROPRIETIES THAT MAKE SENSE TO ADD IN THE EVENT STORE (EVENT SOURCING)

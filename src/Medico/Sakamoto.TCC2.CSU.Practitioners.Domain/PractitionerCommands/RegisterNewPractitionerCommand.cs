@@ -15,11 +15,12 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.PractitionerCommands
             CRM = crm;
         }
 
-        public string FullName { get; }
-        public string Expertise { get; }
-        public string Phone { get; }
-        public string Email { get; }
         public string CRM { get; }
+        public string Email { get; }
+        public string Expertise { get; }
+
+        public string FullName { get; }
+        public string Phone { get; }
 
         public override bool IsValid()
         {
