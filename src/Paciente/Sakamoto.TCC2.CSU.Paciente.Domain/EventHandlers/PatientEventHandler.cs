@@ -1,12 +1,19 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Sakamoto.TCC2.CSU.Patients.Domain.Events;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 {
-    public class PatientEventHandler : INotificationHandler<PatientRegisteredEvent>,
-        INotificationHandler<PatientDeactivatedEvent>, INotificationHandler<PatientUpdatedEvent>
+    public class PatientEventHandler : INotificationHandler<PatientRegisteredEvent>
+        , INotificationHandler<PatientDeactivatedEvent>
+        , INotificationHandler<PatientAddressUpdatedEvent>
+        , INotificationHandler<PatientEmailUpdatedEvent>
+        , INotificationHandler<PatientPhoneUpdatedEvent>
+        , INotificationHandler<PatientPhotoUpdatedEvent>
+        , INotificationHandler<PatientHeartRateUpdatedEvent>
+    
     {
         public Task Handle(PatientDeactivatedEvent notification, CancellationToken cancellationToken)
         {
@@ -22,11 +29,29 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientAddressUpdatedEvent notification, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT UPDATED EVENT MESSAGE
+            throw new NotImplementedException();
+        }
 
-            return Task.CompletedTask;
+        public Task Handle(PatientEmailUpdatedEvent notification, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Handle(PatientPhoneUpdatedEvent notification, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Handle(PatientPhotoUpdatedEvent notification, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Handle(PatientHeartRateUpdatedEvent notification, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

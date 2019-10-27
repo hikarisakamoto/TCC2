@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Tests", "0 - Tests", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Web", "1 - Web", "{FF469AFD-8689-492A-B1CA-09C41BCC588B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{2B33DC8F-4E4C-431B-8160-308C5216F249}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{2B33DC8F-4E4C-431B-8160-308C5216F249}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{C91C8DF8-AACD-4F95-A13A-3B7B3645C8A7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{C91C8DF8-AACD-4F95-A13A-3B7B3645C8A7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", "{6B1173B6-031F-4F31-A792-7AD8EDDF9458}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{6B1173B6-031F-4F31-A792-7AD8EDDF9458}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 - CrossCutting", "{E3709F44-C5B3-4EBD-98D2-69BB4F1D4681}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{E3709F44-C5B3-4EBD-98D2-69BB4F1D4681}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patients.Domain", "src\Paciente\Sakamoto.TCC2.CSU.Paciente.Domain\Sakamoto.TCC2.CSU.Patients.Domain.csproj", "{585C76E8-8C87-4D2F-A1EA-781548CDB502}"
 EndProject
@@ -39,7 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Infrastructure.IoC", "src\Paciente\Sakamoto.TCC2.CSU.Infrastructure.IoC\Sakamoto.TCC2.CSU.Infrastructure.IoC.csproj", "{3CD123E8-F9C8-4D00-9F41-511F22F30E34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Patient.Web", "src\Paciente\Sakamoto.TCC2.CSU.Patient.Web\Sakamoto.TCC2.CSU.Patient.Web.csproj", "{00BD4355-FD3E-44C2-8F18-821EEB82EBA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patient.Web", "src\Paciente\Sakamoto.TCC2.CSU.Patient.Web\Sakamoto.TCC2.CSU.Patient.Web.csproj", "{00BD4355-FD3E-44C2-8F18-821EEB82EBA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{17530FC5-C278-468C-9FA4-977CACEAD48C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patient.Application", "src\Paciente\Sakamoto.TCC2.CSU.Patient.Application\Sakamoto.TCC2.CSU.Patient.Application.csproj", "{9D519C30-9906-4BB1-8F9C-FBD79D84727A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,10 @@ Global
 		{00BD4355-FD3E-44C2-8F18-821EEB82EBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00BD4355-FD3E-44C2-8F18-821EEB82EBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00BD4355-FD3E-44C2-8F18-821EEB82EBA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D519C30-9906-4BB1-8F9C-FBD79D84727A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D519C30-9906-4BB1-8F9C-FBD79D84727A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D519C30-9906-4BB1-8F9C-FBD79D84727A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D519C30-9906-4BB1-8F9C-FBD79D84727A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +105,8 @@ Global
 		{91E5ADA2-22B1-432C-ACE8-50C46E84CEC3} = {24058153-07D6-43DA-A25F-0D03EDD7C18E}
 		{3CD123E8-F9C8-4D00-9F41-511F22F30E34} = {B3EAFEF2-3C04-49AD-9955-5BD4B9231914}
 		{00BD4355-FD3E-44C2-8F18-821EEB82EBA3} = {FF469AFD-8689-492A-B1CA-09C41BCC588B}
+		{17530FC5-C278-468C-9FA4-977CACEAD48C} = {2904454C-F0DD-447F-9943-407A8F7BEA51}
+		{9D519C30-9906-4BB1-8F9C-FBD79D84727A} = {17530FC5-C278-468C-9FA4-977CACEAD48C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C6C7A7B-777F-4063-8B51-90584EB5E22D}

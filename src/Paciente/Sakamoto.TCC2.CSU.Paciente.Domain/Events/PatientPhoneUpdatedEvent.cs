@@ -3,14 +3,13 @@ using Sakamoto.TCC2.CSU.Patients.Domain.Models;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Events
 {
-    public class PatientUpdatedEvent : Event
+    public class PatientPhoneUpdatedEvent : Event
     {
-        public PatientUpdatedEvent(Patient patient)
+        public PatientPhoneUpdatedEvent(Patient patient)
         {
             Patient = patient;
             AggregateId = patient.Id;
         }
-
         public Patient Patient { get; }
     }
 }

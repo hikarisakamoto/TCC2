@@ -13,29 +13,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PractitionerAggregate", "Pr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Web", "1 - Web", "{50832A13-EAAB-442E-9DE1-5740E56FDD77}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{C0C81D37-7D15-4078-8909-2713C39B065D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{C0C81D37-7D15-4078-8909-2713C39B065D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{AA5E149A-3CAB-4660-952D-650ED52C816F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{AA5E149A-3CAB-4660-952D-650ED52C816F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", "{C74FCC4C-8DAE-4BED-9FDE-B71E4E299497}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{C74FCC4C-8DAE-4BED-9FDE-B71E4E299497}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 - CrossCutting", "{145991F5-B9DA-43A3-8DA6-93D7AC0CDC5D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{145991F5-B9DA-43A3-8DA6-93D7AC0CDC5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioner.Web", "src\Medico\Sakamoto.TCC2.CSU.Practitioner.Web\Sakamoto.TCC2.CSU.Practitioner.Web.csproj", "{71F7DDBF-1170-4707-9A72-47EE09E0CC79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Practitioner.Web", "src\Medico\Sakamoto.TCC2.CSU.Practitioner.Web\Sakamoto.TCC2.CSU.Practitioner.Web.csproj", "{71F7DDBF-1170-4707-9A72-47EE09E0CC79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioners.Domain", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.Domain\Sakamoto.TCC2.CSU.Practitioners.Domain.csproj", "{77A487BD-182D-4FBD-8396-A5821A4434F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Practitioners.Domain", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.Domain\Sakamoto.TCC2.CSU.Practitioners.Domain.csproj", "{77A487BD-182D-4FBD-8396-A5821A4434F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bus", "Bus", "{13855902-0D4B-4009-B4D8-941EEAB6346B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoC", "IoC", "{2D48D5A0-4867-4D33-A752-C35BCF3FF0C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.csproj", "{914B036C-85D2-4F4E-A83B-68F8BE7870A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.csproj", "{914B036C-85D2-4F4E-A83B-68F8BE7870A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.CrossCutting.Bus\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus.csproj", "{5129DA8C-3540-4D4C-BC4A-492776B3EF1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.CrossCutting.Bus\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus.csproj", "{5129DA8C-3540-4D4C-BC4A-492776B3EF1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.csproj", "{6618AAE6-BBD3-4A8A-86EB-C59EB60EAFF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC", "src\Medico\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.csproj", "{6618AAE6-BBD3-4A8A-86EB-C59EB60EAFF9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Domain.Core", "src\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj", "{768F6D0A-CED4-41DD-87D7-3686F1D356D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Applicaton", "2 - Applicaton", "{2B708876-5F61-46C6-9B6E-F7B270D6C0DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioner.Application", "src\Medico\Sakamoto.TCC2.CSU.Practitioner.Application\Sakamoto.TCC2.CSU.Practitioner.Application.csproj", "{36707F48-38EE-4A3E-87AC-8722219F5006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,10 @@ Global
 		{768F6D0A-CED4-41DD-87D7-3686F1D356D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{768F6D0A-CED4-41DD-87D7-3686F1D356D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{768F6D0A-CED4-41DD-87D7-3686F1D356D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36707F48-38EE-4A3E-87AC-8722219F5006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36707F48-38EE-4A3E-87AC-8722219F5006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36707F48-38EE-4A3E-87AC-8722219F5006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36707F48-38EE-4A3E-87AC-8722219F5006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,8 @@ Global
 		{5129DA8C-3540-4D4C-BC4A-492776B3EF1A} = {13855902-0D4B-4009-B4D8-941EEAB6346B}
 		{6618AAE6-BBD3-4A8A-86EB-C59EB60EAFF9} = {2D48D5A0-4867-4D33-A752-C35BCF3FF0C1}
 		{768F6D0A-CED4-41DD-87D7-3686F1D356D7} = {04662E16-5FD9-4465-B92C-FEE52871FF00}
+		{2B708876-5F61-46C6-9B6E-F7B270D6C0DE} = {ED3117FD-E747-4071-B31C-569AB72A0CDB}
+		{36707F48-38EE-4A3E-87AC-8722219F5006} = {2B708876-5F61-46C6-9B6E-F7B270D6C0DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3FDD0A5-6F83-45A4-9A21-9AFFA8A969BD}

@@ -16,9 +16,9 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
         public DateTime BirthDate { get; private set; }
         public CPF Cpf { get; private set; }
         public string Email { get; private set; }
-
         public string FullName { get; private set; }
         public Gender Gender { get; private set; }
+        public int HeartRate { get; private set; }
         public bool IsActive { get; private set; }
         public string Phone { get; private set; }
         public byte[] Photo { get; private set; }
@@ -89,6 +89,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
             public Builder WithGender(Gender gender)
             {
                 _patient.Gender = gender;
+                return this;
+            }
+
+            public Builder WithHeartRate(int heartRate)
+            {
+                _patient.HeartRate = heartRate;
                 return this;
             }
 
