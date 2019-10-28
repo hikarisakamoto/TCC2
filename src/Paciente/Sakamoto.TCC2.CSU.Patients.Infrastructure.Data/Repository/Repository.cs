@@ -12,10 +12,10 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
         protected readonly PatientContext Context;
         protected readonly DbSet<TEntity> DbSet;
 
-        protected Repository(PatientContext context, DbSet<TEntity> dbSet)
+        protected Repository(PatientContext context)
         {
             Context = context;
-            DbSet = dbSet;
+            DbSet = Context.Set<TEntity>();
         }
 
         public void Dispose()

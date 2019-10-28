@@ -20,9 +20,9 @@ namespace Sakamoto.TCC2.CSU.Infrastructure.IoC.Infrastructure_Services
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
             // Infra - Data
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IPatientRepository, PatientRepository>();
-            services.AddTransient<PatientContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPatientRepository, PatientRepository>();
+            services.AddScoped<PatientContext>();
         }
     }
 }

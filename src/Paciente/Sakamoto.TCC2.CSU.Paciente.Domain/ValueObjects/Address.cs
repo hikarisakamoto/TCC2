@@ -5,6 +5,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
     public class Address : ValueObject<Address>
     {
+        // EF Constructor
         protected Address()
         {
         }

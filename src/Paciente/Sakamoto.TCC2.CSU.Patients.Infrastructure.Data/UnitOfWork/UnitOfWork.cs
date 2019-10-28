@@ -11,10 +11,9 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.UnitOfWork
         private IDbContextTransaction _dbContextTransaction;
         private bool _disposed;
 
-        public UnitOfWork(PatientContext context, IDbContextTransaction dbContextTransaction)
+        public UnitOfWork(PatientContext context)
         {
             _context = context;
-            _dbContextTransaction = dbContextTransaction;
         }
 
         public void Dispose()
@@ -44,6 +43,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.UnitOfWork
             return true;
         }
 
+
         /// <summary>
         ///     Discard changes in context (DiscardChanges) and, if there is an open transaction, do the Rollback as well.
         /// </summary>
@@ -51,6 +51,15 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.UnitOfWork
         {
             _context.DiscardChanges();
             _dbContextTransaction?.Rollback();
+        }
+
+        /// <summary>
+        ///     Signals the start and opens a transaction in the database.
+        /// </summary>
+        public void BeginTransaction()
+        {
+            _disposed = false;
+            _dbContextTransaction = _context.Database.BeginTransaction();
         }
 
         protected virtual void Dispose(bool disposing)

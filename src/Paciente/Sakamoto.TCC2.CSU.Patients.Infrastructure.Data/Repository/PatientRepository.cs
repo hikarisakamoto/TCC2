@@ -9,7 +9,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
 {
     public class PatientRepository : Repository<Patient>, IPatientRepository
     {
-        public PatientRepository(PatientContext context, DbSet<Patient> dbSet) : base(context, dbSet)
+        public PatientRepository(PatientContext context) : base(context)
         {
         }
 

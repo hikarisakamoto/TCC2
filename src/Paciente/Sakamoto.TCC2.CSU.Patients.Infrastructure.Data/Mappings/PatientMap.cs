@@ -23,11 +23,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Mappings
                 .HasColumnType("datetime")
                 .IsRequired();
 
-            builder.Property(p => p.Cpf.Value)
-                .HasColumnType("varchar(11)")
-                .HasMaxLength(11)
-                .IsRequired();
-
             builder.Property(p => p.Email)
                 .HasColumnType("varchar(100)")
                 .HasMaxLength(100)
@@ -50,35 +45,60 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Mappings
                 .HasColumnType("varbinary(max)")
                 .IsRequired(false);
 
-            builder.Property(p => p.Address.City)
-                .HasColumnType("varchar(100)")
-                .HasMaxLength(100);
-
-            builder.Property(p => p.Address.District)
-                .HasColumnType("varchar(255)")
-                .HasMaxLength(255);
-
-            builder.Property(p => p.Address.Number)
-                .HasColumnType("varchar(10)")
-                .HasMaxLength(10);
-
-            builder.Property(p => p.Address.Observation)
-                .HasColumnType("varchar(255)")
-                .HasMaxLength(255);
-
-            builder.Property(p => p.Address.PostalCode)
-                .HasColumnType("varchar(8)")
-                .HasMaxLength(8);
-
-            builder.Property(p => p.Address.State)
-                .HasColumnType("varchar(2)")
-                .HasMaxLength(2);
-
-            builder.Property(p => p.Address.Street)
-                .HasColumnType("varchar(255)")
-                .HasMaxLength(255);
-
             builder.Ignore(p => p.ValidationResult);
+
+            builder.OwnsOne(p => p.Cpf,
+                cpf =>
+                {
+                    cpf.Property(c => c.Value)
+                        .HasColumnType("varchar(11)")
+                        .HasColumnName("CPF")
+                        .HasMaxLength(11)
+                        .IsRequired();
+
+                    cpf.Ignore(p => p.ValidationResult);
+                });
+
+            builder.OwnsOne(p => p.Address,
+                address =>
+                {
+                    address.Property(a => a.City)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("City")
+                        .HasMaxLength(100);
+
+                    address.Property(a => a.District)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("District")
+                        .HasMaxLength(255);
+
+                    address.Property(a => a.Number)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("Number")
+                        .HasMaxLength(10);
+
+                    address.Property(a => a.Observation)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Observation")
+                        .HasMaxLength(255);
+
+                    address.Property(a => a.PostalCode)
+                        .HasColumnType("varchar(8)")
+                        .HasColumnName("PostalCode")
+                        .HasMaxLength(8);
+
+                    address.Property(a => a.State)
+                        .HasColumnType("varchar(2)")
+                        .HasColumnName("State")
+                        .HasMaxLength(2);
+
+                    address.Property(a => a.Street)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Street")
+                        .HasMaxLength(255);
+
+                    address.Ignore(p => p.ValidationResult);
+                });
         }
     }
 }

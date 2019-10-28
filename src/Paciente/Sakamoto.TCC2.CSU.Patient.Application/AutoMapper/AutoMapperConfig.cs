@@ -4,7 +4,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Application.AutoMapper
 {
     public class AutoMapperConfig
     {
-        public static MapperConfiguration RegisterMapping()
+        public static MapperConfiguration RegisterMappings()
         {
             return new MapperConfiguration(config =>
             {

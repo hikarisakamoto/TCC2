@@ -4,6 +4,8 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 {
     public class CPF : ValueObject<CPF>
     {
+        // EF Constructor
+        protected CPF() { }
         public CPF(string cpf)
         {
             Value = cpf;
@@ -13,8 +15,8 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects
 
         public override bool IsValid()
         {
-            var multiplier1 = new int[9] {10, 9, 8, 7, 6, 5, 4, 3, 2};
-            var multiplier2 = new int[10] {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+            var multiplier1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var multiplier2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
             Value = Value.Trim().Replace(".", "").Replace("-", "");
             if (Value.Length != 11)
