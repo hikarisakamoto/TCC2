@@ -5,10 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AutoMapper\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.Paciente.Domain\Sakamoto.TCC2.CSU.Patients.Domain.csproj" />
   </ItemGroup>
 
 </Project>

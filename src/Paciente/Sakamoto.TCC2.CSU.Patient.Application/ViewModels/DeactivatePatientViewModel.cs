@@ -1,0 +1,16 @@
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Sakamoto.TCC2.CSU.Patient.Application.ViewModels
+{
+    public class DeactivatePatientViewModel
+    {
+        [Key] public Guid Id { get; set; }
+
+        [Required(ErrorMessage = "CPF is required")]
+        [DisplayName("CPF")]
+        [StringLength(11)]
+        public string Cpf { get; set; }
+    }
+}

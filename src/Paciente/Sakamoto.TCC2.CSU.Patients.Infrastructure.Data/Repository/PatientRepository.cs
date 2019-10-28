@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
 using Sakamoto.TCC2.CSU.Patients.Domain.Models;
@@ -14,7 +15,14 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
 
         public Patient GetByCpf(string patientCpf)
         {
-            return Context.Patients.FirstOrDefault(p => p.Cpf.Value.Equals(patientCpf));
+            var sql = $"SELECT * FROM PATIENTS P WHERE P.CPF LIKE '%{patientCpf}%'";
+            return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql);
+        }
+
+        public override Patient GetById(Guid id)
+        {
+            var sql = $"SELECT * FROM PATIENTS P WHERE P.ID = {id}";
+            return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql);
         }
     }
 }

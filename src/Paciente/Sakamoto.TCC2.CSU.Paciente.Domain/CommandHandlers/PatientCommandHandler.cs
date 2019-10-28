@@ -8,6 +8,7 @@ using Sakamoto.TCC2.CSU.Patients.Domain.Commands;
 using Sakamoto.TCC2.CSU.Patients.Domain.Events;
 using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
 using Sakamoto.TCC2.CSU.Patients.Domain.Models;
+using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
 {
@@ -129,8 +130,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 return Task.FromResult(false);
             }
 
+            var address = new Address.Builder().InCityOf(message.City).InTheDistrict(message.District)
+                .InTheState(message.State).WithNumber(message.Number).WithObservation(message.Observation)
+                .WithPostalCode(message.PostalCode).WithStreet(message.Street).Build();
+
             var patient = new Patient.Builder(existingPatient.Id).BornIn(existingPatient.BirthDate)
-                .Named(existingPatient.FullName).ThatLivesIn(message.Address).WithCpf(existingPatient.Cpf)
+                .Named(existingPatient.FullName).ThatLivesIn(address).WithCpf(existingPatient.Cpf)
                 .WithEmail(existingPatient.Email).WithGender(existingPatient.Gender).WithPhone(existingPatient.Phone)
                 .WithPhoto(existingPatient.Photo).WhichIsActive().WithHeartRate(existingPatient.HeartRate).Build();
 
