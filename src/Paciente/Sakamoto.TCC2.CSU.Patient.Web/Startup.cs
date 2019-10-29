@@ -1,3 +1,4 @@
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,9 +7,9 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Sakamoto.TCC2.CSU.Infrastructure.IoC;
-using Sakamoto.TCC2.CSU.Patient.Web.Configurations;
-using Swashbuckle.AspNetCore.Swagger;
+using Sakamoto.TCC2.CSU.Patient.Application.AutoMapper;
 
 namespace Sakamoto.TCC2.CSU.Patient.Web
 {
@@ -47,12 +48,15 @@ namespace Sakamoto.TCC2.CSU.Patient.Web
                 c.AllowAnyOrigin();
             });
 
-            //app.UseHttpsRedirection();
-            //app.UseAuthentication();
-            //app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "CSU - Patient API");
+                s.RoutePrefix = string.Empty;
+            });
 
-            //app.UseSwagger();
-            //app.UseSwaggerUI(s => { s.SwaggerEndpoint("/swagger/v1/swagger.json", "Equinox Project API v1.1"); });
+            app.UseRouting();
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -64,19 +68,13 @@ namespace Sakamoto.TCC2.CSU.Patient.Web
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddAutoMapperSetup();
+            services.AddAutoMapper(typeof(Startup), typeof(DomainToViewModelMapping), typeof(ViewModelToDomainMapping));
 
-            //services.AddSwaggerGen(s =>
-            //{
-            //    s.SwaggerDoc("v1", new Info
-            //    {
-            //        Version = "v1",
-            //        Title = "Cadastro de Saúde Unificado",
-            //        Description = "CSU API Swagger surface",
-            //        Contact = new Contact {Name = "Hikari Sakamoto", Email = "hikarisakamoto@gmail.com"},
-            //        License = new License {Name = "MIT"}
-            //    });
-            //});
+
+            services.AddControllers();
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); });
 
             // Adding MediatR for Domain Events and Notifications
             services.AddMediatR(typeof(Startup));

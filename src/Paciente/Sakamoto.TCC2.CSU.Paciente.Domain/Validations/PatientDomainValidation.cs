@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentValidation;
 using Sakamoto.TCC2.CSU.Patients.Domain.Models;
+using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
 {
@@ -27,12 +28,12 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
         private void ValidateCpf()
         {
             RuleFor(p => p.Cpf)
-                .Must(cpf => cpf.IsValid()).WithMessage("Please insert a valid CPF.");
+                .Must(cpf => new CPF(cpf).IsValid()).WithMessage("Please insert a valid CPF.");
         }
 
         private void ValidateCpfLength()
         {
-            RuleFor(p => p.Cpf.Value)
+            RuleFor(p => p.Cpf)
                 .Length(11).WithMessage("CPF must be 11 characters long.");
         }
 

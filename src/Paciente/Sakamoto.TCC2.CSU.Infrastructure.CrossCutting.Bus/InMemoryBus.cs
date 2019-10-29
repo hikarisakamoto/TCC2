@@ -3,7 +3,6 @@ using MediatR;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Domain.Core.Commands;
 using Sakamoto.TCC2.CSU.Domain.Core.Events;
-using Sakamoto.TCC2.CSU.Domain.Core.Events.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus
 {
@@ -12,7 +11,7 @@ namespace Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus
         //private readonly IEventStore _eventStore;
         private readonly IMediator _mediator;
 
-        public InMemoryBus(IMediator mediator/*, IEventStore eventStore*/)
+        public InMemoryBus(IMediator mediator /*, IEventStore eventStore*/)
         {
             _mediator = mediator;
             //_eventStore = eventStore;

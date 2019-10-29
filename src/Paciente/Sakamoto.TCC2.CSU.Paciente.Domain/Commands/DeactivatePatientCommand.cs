@@ -1,6 +1,5 @@
 ﻿using System;
 using Sakamoto.TCC2.CSU.Patients.Domain.Validations;
-using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
 {
@@ -9,7 +8,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
         public DeactivatePatientCommand(Guid id, string cpf)
         {
             Id = id;
-            Cpf = new CPF(cpf);
+            Cpf = cpf;
         }
 
         public override bool IsValid()

@@ -11,10 +11,9 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.UnitOfWork
         private IDbContextTransaction _dbContextTransaction;
         private bool _disposed;
 
-        public UnitOfWork(PractitionerContext context, IDbContextTransaction dbContextTransaction)
+        public UnitOfWork(PractitionerContext context)
         {
             _context = context;
-            _dbContextTransaction = dbContextTransaction;
         }
 
         public void Dispose()
@@ -33,6 +32,15 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.UnitOfWork
         }
 
         /// <summary>
+        ///     Signals the start and opens a transaction in the database.
+        /// </summary>
+        public void BeginTransaction()
+        {
+            _disposed = false;
+            _dbContextTransaction = _context.Database.BeginTransaction();
+        }
+
+        /// <summary>
         ///     Saves changes in context (SaveChanges) and, if there is an open transaction, commits as well.
         /// </summary>
         /// <returns>True if there was any entity changed or false if there wasn't</returns>
@@ -43,6 +51,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.UnitOfWork
             _dbContextTransaction?.Commit();
             return true;
         }
+
 
         /// <summary>
         ///     Discard changes in context (DiscardChanges) and, if there is an open transaction, do the Rollback as well.

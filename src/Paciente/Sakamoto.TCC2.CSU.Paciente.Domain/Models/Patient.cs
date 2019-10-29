@@ -14,7 +14,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 
         public Address Address { get; private set; }
         public DateTime BirthDate { get; private set; }
-        public CPF Cpf { get; private set; }
+        public string Cpf { get; private set; }
         public string Email { get; private set; }
         public string FullName { get; private set; }
         public Gender Gender { get; private set; }
@@ -74,7 +74,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
                 return this;
             }
 
-            public Builder WithCpf(CPF cpf)
+            public Builder WithCpf(string cpf)
             {
                 _patient.Cpf = cpf;
                 return this;

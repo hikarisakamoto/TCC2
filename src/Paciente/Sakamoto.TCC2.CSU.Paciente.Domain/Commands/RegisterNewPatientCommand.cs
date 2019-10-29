@@ -1,6 +1,5 @@
 ﻿using System;
 using Sakamoto.TCC2.CSU.Patients.Domain.Validations;
-using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects.Enums;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
@@ -16,7 +15,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Commands
             FullName = fullName;
             BirthDate = birthDate;
             Gender = gender;
-            Cpf = new CPF(cpf);
+            Cpf = cpf;
             Phone = phone;
         }
 

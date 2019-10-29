@@ -9,11 +9,11 @@ namespace Sakamoto.TCC2.CSU.Patient.Application.AutoMapper
         public ViewModelToDomainMapping()
         {
             CreateMap<RegisterNewPatientViewModel, RegisterNewPatientCommand>()
-                .ConstructUsing(p =>
-                new RegisterNewPatientCommand(p.FullName, p.BirthDate, p.Gender, p.Cpf, p.Phone));
+                .ConvertUsing(p =>
+                    new RegisterNewPatientCommand(p.FullName, p.BirthDate, p.Gender, p.Cpf, p.Phone));
 
             CreateMap<DeactivatePatientViewModel, DeactivatePatientCommand>()
-                .ConstructUsing(p =>
+                .ConvertUsing(p =>
                     new DeactivatePatientCommand(p.Id, p.Cpf));
 
             CreateMap<UpdatePatientAddressViewModel, UpdatePatientAddressCommand>()

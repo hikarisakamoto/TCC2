@@ -24,7 +24,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Repository
             GC.SuppressFinalize(this);
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             DbSet.Add(entity);
         }
@@ -34,22 +34,22 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Repository
             return DbSet;
         }
 
-        public TEntity GetById(Guid id)
+        public virtual TEntity GetById(Guid id)
         {
             return DbSet.Find(id);
         }
 
-        public void Remove(Guid id)
+        public virtual void Remove(Guid id)
         {
             DbSet.Remove(DbSet.Find(id));
         }
 
-        public int SaveChanges()
+        public virtual int SaveChanges()
         {
             return Context.SaveChanges();
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             DbSet.Update(entity);
         }

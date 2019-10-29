@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Sakamoto.TCC2.CSU.Domain.Core.Notifications;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers;
+using Sakamoto.TCC2.CSU.Practitioners.Domain.Commands;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Events;
-using Sakamoto.TCC2.CSU.Practitioners.Domain.PractitionerCommands;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.Domain_Services
 {

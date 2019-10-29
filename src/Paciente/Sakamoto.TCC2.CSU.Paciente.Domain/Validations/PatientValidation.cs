@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentValidation;
 using Sakamoto.TCC2.CSU.Patients.Domain.Commands;
+using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
 {
@@ -16,7 +17,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
         protected void ValidateCpf()
         {
             RuleFor(p => p.Cpf)
-                .Must(cpf => cpf.IsValid()).WithMessage("Please insert a valid CPF.");
+                .Must(cpf => new CPF(cpf).IsValid()).WithMessage("Please insert a valid CPF.");
         }
 
         protected void ValidateFullName()

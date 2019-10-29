@@ -40,7 +40,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 return Task.FromResult(false);
             }
 
-            var existingPatient = _patientRepository.GetByCpf(message.Cpf.Value);
+            var existingPatient = _patientRepository.GetByCpf(message.Cpf);
 
             if (existingPatient == null)
             {
@@ -86,10 +86,10 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 .WithCpf(message.Cpf)
                 .WithGender(message.Gender).WithPhone(message.Phone).WhichIsActive().Build();
 
-            if (_patientRepository.GetByCpf(patient.Cpf.Value) != null)
+            if (_patientRepository.GetByCpf(patient.Cpf) != null)
             {
                 _bus.RaiseEvent(new DomainNotification(message.MessageType,
-                    $"There is already a patient registered with this CPF ({patient.Cpf.Value})"));
+                    $"There is already a patient registered with this CPF ({patient.Cpf})"));
                 return Task.FromResult(false);
             }
 
@@ -115,7 +115,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 return Task.FromResult(false);
             }
 
-            var existingPatient = _patientRepository.GetByCpf(message.Cpf.Value);
+            var existingPatient = _patientRepository.GetById(message.Id);
 
             if (existingPatient == null)
             {
@@ -161,7 +161,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 return Task.FromResult(false);
             }
 
-            var existingPatient = _patientRepository.GetByCpf(message.Cpf.Value);
+            var existingPatient = _patientRepository.GetById(message.Id);
 
             if (existingPatient == null)
             {
@@ -195,6 +195,48 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
             return Task.FromResult(true);
         }
 
+        public Task<bool> Handle(UpdatePatientHeartRateCommand message, CancellationToken cancellationToken)
+        {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return Task.FromResult(false);
+            }
+
+            var existingPatient = _patientRepository.GetById(message.Id);
+
+            if (existingPatient == null)
+            {
+                _bus.RaiseEvent(new DomainNotification(message.MessageType, "Patient not found."));
+                return Task.FromResult(false);
+            }
+
+            if (existingPatient.Id != message.Id)
+            {
+                _bus.RaiseEvent(new DomainNotification(message.MessageType,
+                    "Patient identification does not match, please verify."));
+                return Task.FromResult(false);
+            }
+
+            var patient = new Patient.Builder(existingPatient.Id).BornIn(existingPatient.BirthDate)
+                .Named(existingPatient.FullName).ThatLivesIn(existingPatient.Address).WithCpf(existingPatient.Cpf)
+                .WithEmail(existingPatient.Email).WithGender(existingPatient.Gender).WithPhone(existingPatient.Phone)
+                .WithPhoto(existingPatient.Photo).WhichIsActive().WithHeartRate(message.HeartRate).Build();
+
+            if (!patient.IsValid())
+            {
+                NotifyValidationErrors(patient.ValidationResult);
+                return Task.FromResult(false);
+            }
+
+            _patientRepository.Update(patient);
+
+            if (Commit())
+                _bus.RaiseEvent(new PatientHeartRateUpdatedEvent(patient));
+
+            return Task.FromResult(true);
+        }
+
         public Task<bool> Handle(UpdatePatientPhoneCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
@@ -203,7 +245,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 return Task.FromResult(false);
             }
 
-            var existingPatient = _patientRepository.GetByCpf(message.Cpf.Value);
+            var existingPatient = _patientRepository.GetById(message.Id);
 
             if (existingPatient == null)
             {
@@ -245,7 +287,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
                 return Task.FromResult(false);
             }
 
-            var existingPatient = _patientRepository.GetByCpf(message.Cpf.Value);
+            var existingPatient = _patientRepository.GetById(message.Id);
 
             if (existingPatient == null)
             {
@@ -275,48 +317,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.CommandHandlers
 
             if (Commit())
                 _bus.RaiseEvent(new PatientPhoneUpdatedEvent(patient));
-
-            return Task.FromResult(true);
-        }
-
-        public Task<bool> Handle(UpdatePatientHeartRateCommand message, CancellationToken cancellationToken)
-        {
-            if (!message.IsValid())
-            {
-                NotifyValidationErrors(message);
-                return Task.FromResult(false);
-            }
-
-            var existingPatient = _patientRepository.GetByCpf(message.Cpf.Value);
-
-            if (existingPatient == null)
-            {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType, "Patient not found."));
-                return Task.FromResult(false);
-            }
-
-            if (existingPatient.Id != message.Id)
-            {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType,
-                    "Patient identification does not match, please verify."));
-                return Task.FromResult(false);
-            }
-
-            var patient = new Patient.Builder(existingPatient.Id).BornIn(existingPatient.BirthDate)
-                .Named(existingPatient.FullName).ThatLivesIn(existingPatient.Address).WithCpf(existingPatient.Cpf)
-                .WithEmail(existingPatient.Email).WithGender(existingPatient.Gender).WithPhone(existingPatient.Phone)
-                .WithPhoto(existingPatient.Photo).WhichIsActive().WithHeartRate(message.HeartRate).Build();
-
-            if (!patient.IsValid())
-            {
-                NotifyValidationErrors(patient.ValidationResult);
-                return Task.FromResult(false);
-            }
-
-            _patientRepository.Update(patient);
-
-            if (Commit())
-                _bus.RaiseEvent(new PatientHeartRateUpdatedEvent(patient));
 
             return Task.FromResult(true);
         }

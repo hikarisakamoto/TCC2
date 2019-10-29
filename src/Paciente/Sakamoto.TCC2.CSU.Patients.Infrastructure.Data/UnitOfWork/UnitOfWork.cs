@@ -32,6 +32,15 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.UnitOfWork
         }
 
         /// <summary>
+        ///     Signals the start and opens a transaction in the database.
+        /// </summary>
+        public void BeginTransaction()
+        {
+            _disposed = false;
+            _dbContextTransaction = _context.Database.BeginTransaction();
+        }
+
+        /// <summary>
         ///     Saves changes in context (SaveChanges) and, if there is an open transaction, commits as well.
         /// </summary>
         /// <returns>True if there was any entity changed or false if there wasn't</returns>
@@ -51,15 +60,6 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.UnitOfWork
         {
             _context.DiscardChanges();
             _dbContextTransaction?.Rollback();
-        }
-
-        /// <summary>
-        ///     Signals the start and opens a transaction in the database.
-        /// </summary>
-        public void BeginTransaction()
-        {
-            _disposed = false;
-            _dbContextTransaction = _context.Database.BeginTransaction();
         }
 
         protected virtual void Dispose(bool disposing)

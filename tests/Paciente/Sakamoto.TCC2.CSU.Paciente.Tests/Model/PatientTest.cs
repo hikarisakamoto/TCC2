@@ -27,7 +27,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
             // Act
             var patient = new Patient.Builder(Guid.NewGuid())
                 .Named("Johnny Bravo")
-                .WithCpf(new CPF("58554143027"))
+                .WithCpf("58554143027")
                 .BornIn(new DateTime(1988, 09, 09))
                 .WithGender(Gender.Male)
                 .WithEmail("test@test.com")
@@ -39,7 +39,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
 
             // Assert
             Assert.Equal("Johnny Bravo", patient.FullName);
-            Assert.Equal("58554143027", patient.Cpf.Value);
+            Assert.Equal("58554143027", patient.Cpf);
             Assert.Equal(new DateTime(1988, 09, 09), patient.BirthDate);
             Assert.Equal(Gender.Male, patient.Gender);
             Assert.Equal("test@test.com", patient.Email);
@@ -69,7 +69,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
             // Act
             var patient = new Patient.Builder(Guid.NewGuid())
                 .Named("Johnny Bravo")
-                .WithCpf(new CPF("58554143027"))
+                .WithCpf("58554143027")
                 .BornIn(new DateTime(1988, 09, 09))
                 .WithGender(Gender.Male)
                 .WithEmail("test@test.com")
@@ -80,7 +80,7 @@ namespace Sakamoto.TCC2.CSU.Paciente.Tests.Model
 
             // Assert
             Assert.Equal("Johnny Bravo", patient.FullName);
-            Assert.Equal("58554143027", patient.Cpf.Value);
+            Assert.Equal("58554143027", patient.Cpf);
             Assert.Equal(new DateTime(1988, 09, 09), patient.BirthDate);
             Assert.Equal(Gender.Male, patient.Gender);
             Assert.Equal("test@test.com", patient.Email);

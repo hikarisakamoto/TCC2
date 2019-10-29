@@ -1,4 +1,4 @@
-﻿using Sakamoto.TCC2.CSU.Practitioners.Domain.PractitionerCommands;
+﻿using Sakamoto.TCC2.CSU.Practitioners.Domain.Commands;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Domain.Validations
 {

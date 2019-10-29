@@ -15,14 +15,14 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
 
         public Patient GetByCpf(string patientCpf)
         {
-            var sql = $"SELECT * FROM PATIENTS P WHERE P.CPF LIKE '%{patientCpf}%'";
-            return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql);
+            const string sql = "SELECT * FROM PATIENTS P WHERE P.CPF LIKE '%@patientCpf%'";
+            return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql, new {patientCpf});
         }
 
         public override Patient GetById(Guid id)
         {
-            var sql = $"SELECT * FROM PATIENTS P WHERE P.ID = {id}";
-            return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql);
+            const string sql = "SELECT * FROM PATIENTS P WHERE P.ID = @id";
+            return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql, new {id});
         }
     }
 }

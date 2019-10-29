@@ -11,6 +11,11 @@ namespace Sakamoto.TCC2.CSU.Domain.Core.Notifications
     {
         private ICollection<DomainNotification> _notifications;
 
+        public DomainNotificationHandler()
+        {
+            _notifications = new List<DomainNotification>();
+        }
+
         public void Dispose()
         {
             _notifications = new List<DomainNotification>();

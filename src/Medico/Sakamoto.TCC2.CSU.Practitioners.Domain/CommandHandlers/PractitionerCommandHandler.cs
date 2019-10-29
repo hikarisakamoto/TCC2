@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using MediatR;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Domain.Core.Notifications;
+using Sakamoto.TCC2.CSU.Practitioners.Domain.Commands;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Events;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Models;
-using Sakamoto.TCC2.CSU.Practitioners.Domain.PractitionerCommands;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers
 {

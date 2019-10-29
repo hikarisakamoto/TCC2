@@ -45,19 +45,13 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Mappings
                 .HasColumnType("varbinary(max)")
                 .IsRequired(false);
 
+            builder.Property(p => p.Cpf)
+                .HasColumnType("varchar(11)")
+                .HasColumnName("CPF")
+                .HasMaxLength(11)
+                .IsRequired();
+
             builder.Ignore(p => p.ValidationResult);
-
-            builder.OwnsOne(p => p.Cpf,
-                cpf =>
-                {
-                    cpf.Property(c => c.Value)
-                        .HasColumnType("varchar(11)")
-                        .HasColumnName("CPF")
-                        .HasMaxLength(11)
-                        .IsRequired();
-
-                    cpf.Ignore(p => p.ValidationResult);
-                });
 
             builder.OwnsOne(p => p.Address,
                 address =>

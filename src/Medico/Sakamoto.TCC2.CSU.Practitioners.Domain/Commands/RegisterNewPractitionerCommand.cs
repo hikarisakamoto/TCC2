@@ -1,7 +1,7 @@
 ﻿using System;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Validations;
 
-namespace Sakamoto.TCC2.CSU.Practitioners.Domain.PractitionerCommands
+namespace Sakamoto.TCC2.CSU.Practitioners.Domain.Commands
 {
     public class RegisterNewPractitionerCommand : PractitionerCommand
     {

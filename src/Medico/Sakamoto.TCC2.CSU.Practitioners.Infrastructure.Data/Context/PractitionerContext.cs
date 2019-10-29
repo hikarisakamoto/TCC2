@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.IO;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Models;
 using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Mappings;
 
@@ -8,13 +8,6 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context
 {
     public class PractitionerContext : DbContext
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
-
-        protected PractitionerContext(IHostingEnvironment hostingEnvironment)
-        {
-            _hostingEnvironment = hostingEnvironment;
-        }
-
         public DbSet<Practitioner> Practitioners { get; set; }
 
         /// <summary>
@@ -41,12 +34,12 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Get configurations from the app settings
-            var configuration = new ConfigurationBuilder().SetBasePath(_hostingEnvironment.ContentRootPath)
-                .AddJsonFile("appsettings.json").Build();
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-            // define the database to use
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-            //base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

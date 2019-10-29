@@ -10,6 +10,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Events
             Patient = patient;
             AggregateId = patient.Id;
         }
+
         public Patient Patient { get; }
     }
 }

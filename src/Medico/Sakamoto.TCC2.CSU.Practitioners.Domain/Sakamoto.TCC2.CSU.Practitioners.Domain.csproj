@@ -13,4 +13,8 @@
     <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
+
 </Project>

@@ -8,9 +8,9 @@ namespace Sakamoto.TCC2.CSU.Patient.Application.AutoMapper
     {
         public DomainToViewModelMapping()
         {
-            CreateMap<Patients.Domain.Models.Patient, PatientViewModel>().ForMember(pvm => pvm.Cpf, option => option.MapFrom(p => p.Cpf.Value));
+            CreateMap<Patients.Domain.Models.Patient, PatientViewModel>();
 
-            CreateMap<Patients.Domain.Models.Patient, PatientBasicInformationViewModel>().ForMember(pvm => pvm.Cpf, option => option.MapFrom(p => p.Cpf.Value));
+            CreateMap<Patients.Domain.Models.Patient, PatientBasicInformationViewModel>();
 
             CreateMap<Address, AddressViewModel>();
         }

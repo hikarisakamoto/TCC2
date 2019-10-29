@@ -13,7 +13,8 @@ namespace Sakamoto.TCC2.CSU.Infrastructure.IoC.Application_Services
             services.AddScoped<IPatientAppService, PatientAppService>();
 
 
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            services.AddScoped<IMapper>(
+                sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
         }
     }
 }
