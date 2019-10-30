@@ -4,6 +4,7 @@ using AutoMapper;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Practitioner.Application.Interfaces;
 using Sakamoto.TCC2.CSU.Practitioner.Application.ViewModels;
+using Sakamoto.TCC2.CSU.Practitioners.Domain.Commands;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.Practitioner.Application.Services
@@ -24,32 +25,36 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Application.Services
 
         public void Deactivate(DeactivatePractitionerViewModel practitionerViewModel)
         {
-            throw new NotImplementedException();
+            var practitioner = _mapper.Map<DeactivatePractitionerCommand>(practitionerViewModel);
+            _bus.SendCommand(practitioner);
         }
 
-        public Task<PractitionerViewModel> GetByCrm(string crm)
+        public async Task<PractitionerViewModel> GetByCrm(string crm)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<PractitionerViewModel>(_practitionerRepository.GetByCrm(crm));
         }
 
-        public Task<PractitionerViewModel> GetById(Guid id)
+        public async Task<PractitionerViewModel> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<PractitionerViewModel>(_practitionerRepository.GetById(id));
         }
 
         public void Register(RegisterNewPractitionerViewModel practitionerViewModel)
         {
-            throw new NotImplementedException();
+            var practitioner = _mapper.Map<RegisterNewPractitionerCommand>(practitionerViewModel);
+            _bus.SendCommand(practitioner);
         }
 
         public void UpdateEmail(UpdatePractitionerEmailViewModel practitionerViewModel)
         {
-            throw new NotImplementedException();
+            var practitioner = _mapper.Map<UpdatePractitionerEmailCommand>(practitionerViewModel);
+            _bus.SendCommand(practitioner);
         }
 
         public void UpdatePhone(UpdatePractitionerPhoneViewModel practitionerViewModel)
         {
-            throw new NotImplementedException();
+            var practitioner = _mapper.Map<UpdatePractitionerPhoneCommand>(practitionerViewModel);
+            _bus.SendCommand(practitioner);
         }
     }
 }

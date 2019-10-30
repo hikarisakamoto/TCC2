@@ -5,11 +5,11 @@ using Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Models;
 using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context;
 
-namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Repository
+namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Repositories
 {
     public class PractitionerRepository : Repository<Practitioner>, IPractitionerRepository
     {
-        public PractitionerRepository(PractitionerContext context, DbSet<Practitioner> dbSet) : base(context, dbSet)
+        public PractitionerRepository(PractitionerContext context) : base(context)
         {
         }
 

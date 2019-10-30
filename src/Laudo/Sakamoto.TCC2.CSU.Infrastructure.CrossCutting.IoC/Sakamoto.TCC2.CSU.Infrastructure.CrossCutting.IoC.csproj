@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Application Services\" />
+    <Folder Include="Domain Services\" />
+    <Folder Include="Infrastructure Services\" />
+  </ItemGroup>
+
+</Project>

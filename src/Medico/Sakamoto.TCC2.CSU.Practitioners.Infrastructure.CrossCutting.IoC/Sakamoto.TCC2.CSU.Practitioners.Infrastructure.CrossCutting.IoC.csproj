@@ -5,16 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.Practitioner.Application\Sakamoto.TCC2.CSU.Practitioner.Application.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Practitioners.CrossCutting.Bus\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Practitioners.Domain\Sakamoto.TCC2.CSU.Practitioners.Domain.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data\Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.csproj" />

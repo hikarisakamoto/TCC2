@@ -92,7 +92,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
 
 
         [HttpPut]
-        [Route("patient-management-address")]
+        [Route("patient-management-update-address")]
         public async Task<IActionResult> UpdatePatientAddress([FromBody] UpdatePatientAddressViewModel patientViewModel)
         {
             if (!ModelState.IsValid)
@@ -107,7 +107,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
         }
 
         [HttpPut]
-        [Route("patient-management-email")]
+        [Route("patient-management-update-email")]
         public async Task<IActionResult> UpdatePatientEmail([FromBody] UpdatePatientEmailViewModel patientViewModel)
         {
             if (!ModelState.IsValid)
@@ -122,7 +122,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
         }
 
         [HttpPut]
-        [Route("patient-management-heartrate")]
+        [Route("patient-management-update-heartrate")]
         public async Task<IActionResult> UpdatePatientHeartRate(
             [FromBody] UpdatePatientHeartRateViewModel patientViewModel)
         {
@@ -138,7 +138,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
         }
 
         [HttpPut]
-        [Route("patient-management-phone")]
+        [Route("patient-management-update-phone")]
         public async Task<IActionResult> UpdatePatientPhone([FromBody] UpdatePatientPhoneViewModel patientViewModel)
         {
             if (!ModelState.IsValid)
@@ -153,7 +153,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
         }
 
         [HttpPut]
-        [Route("patient-management-photo")]
+        [Route("patient-management-update-photo")]
         public async Task<IActionResult> UpdatePatientPhoto([FromBody] UpdatePatientPhotoViewModel patientViewModel)
         {
             if (!ModelState.IsValid)

@@ -2,20 +2,20 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Sakamoto.TCC2.CSU.Domain.Core.Models;
-using Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces;
-using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Context;
+using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
+using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context;
 
-namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Repository
+namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repositories
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        protected readonly PractitionerContext Context;
+        protected readonly PatientContext Context;
         protected readonly DbSet<TEntity> DbSet;
 
-        protected Repository(PractitionerContext context, DbSet<TEntity> dbSet)
+        protected Repository(PatientContext context)
         {
             Context = context;
-            DbSet = dbSet;
+            DbSet = Context.Set<TEntity>();
         }
 
         public void Dispose()

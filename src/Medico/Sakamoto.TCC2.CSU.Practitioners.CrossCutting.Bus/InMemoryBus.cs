@@ -12,16 +12,15 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus
         private readonly IEventStore _eventStore;
         private readonly IMediator _mediator;
 
-        public InMemoryBus(IMediator mediator, IEventStore eventStore)
+        public InMemoryBus(IMediator mediator)
         {
             _mediator = mediator;
-            _eventStore = eventStore;
         }
 
         public Task RaiseEvent<T>(T @event) where T : Event
         {
-            if (!@event.MessageType.Equals("DomainNotification"))
-                _eventStore?.Save(@event);
+            //if (!@event.MessageType.Equals("DomainNotification"))
+            //    _eventStore?.Save(@event);
 
             return _mediator.Publish(@event);
         }

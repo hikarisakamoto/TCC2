@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C1DBD658-13EF-49F8-99ED-EAD19C246983}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EF11ABBA-2CF2-498B-8D16-63769CD9389B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EF11ABBA-2CF2-498B-8D16-63769CD9389B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain.Core", "Domain.Core", "{04662E16-5FD9-4465-B92C-FEE52871FF00}"
 EndProject
@@ -39,7 +39,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Domain.Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Applicaton", "2 - Applicaton", "{2B708876-5F61-46C6-9B6E-F7B270D6C0DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Practitioner.Application", "src\Medico\Sakamoto.TCC2.CSU.Practitioner.Application\Sakamoto.TCC2.CSU.Practitioner.Application.csproj", "{36707F48-38EE-4A3E-87AC-8722219F5006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Practitioner.Application", "src\Medico\Sakamoto.TCC2.CSU.Practitioner.Application\Sakamoto.TCC2.CSU.Practitioner.Application.csproj", "{36707F48-38EE-4A3E-87AC-8722219F5006}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Itens", "Solution Itens", "{EA14C746-ECCD-4008-A97B-867B5D5CCC36}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

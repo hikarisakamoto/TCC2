@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.Application_Services;
 using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.Domain_Services;
 using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.Infrastructure_Service;
 
@@ -16,6 +17,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC
         /// <returns></returns>
         public static IServiceCollection Register(this IServiceCollection services)
         {
+            ApplicationService.Register(services);
             DomainService.Register(services);
             InfrastructureService.Register(services);
 

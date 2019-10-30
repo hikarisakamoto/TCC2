@@ -4,7 +4,7 @@ using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus;
 using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
 using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context;
-using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository;
+using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repositories;
 using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.UnitOfWork;
 
 namespace Sakamoto.TCC2.CSU.Infrastructure.IoC.Infrastructure_Services

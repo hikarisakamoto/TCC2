@@ -24,10 +24,6 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Application.ViewModels
         [DisplayName("Full Name")]
         public string FullName { get; set; }
 
-        [Key] public Guid Id { get; set; }
-
-        public bool IsActive { get; set; }
-
         [Required(ErrorMessage = "Phone is required")]
         [MaxLength(20)]
         public string Phone { get; set; }

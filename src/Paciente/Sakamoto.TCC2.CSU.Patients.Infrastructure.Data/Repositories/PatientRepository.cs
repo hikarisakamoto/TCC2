@@ -5,7 +5,7 @@ using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
 using Sakamoto.TCC2.CSU.Patients.Domain.Models;
 using Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Context;
 
-namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repository
+namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repositories
 {
     public class PatientRepository : Repository<Patient>, IPatientRepository
     {

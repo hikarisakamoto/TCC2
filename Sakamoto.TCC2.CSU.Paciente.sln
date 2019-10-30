@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Domain.Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BFE9C19A-08BA-4AE3-B514-99A8FAA3DC32}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B2EE8D3E-6672-4B46-8B51-1CA40BA42194}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B2EE8D3E-6672-4B46-8B51-1CA40BA42194}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patients.Infrastructure.Data", "src\Paciente\Sakamoto.TCC2.CSU.Patients.Infrastructure.Data\Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.csproj", "{E745AD75-0281-4C27-AA4C-715970EB59F1}"
 EndProject
@@ -44,6 +44,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{17530FC5-C278-468C-9FA4-977CACEAD48C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Patient.Application", "src\Paciente\Sakamoto.TCC2.CSU.Patient.Application\Sakamoto.TCC2.CSU.Patient.Application.csproj", "{9D519C30-9906-4BB1-8F9C-FBD79D84727A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Itens", "Solution Itens", "{241E5E04-C2AD-4F92-ADE5-C9B4F78D1356}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
