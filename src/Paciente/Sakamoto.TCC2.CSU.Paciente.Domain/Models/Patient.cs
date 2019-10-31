@@ -25,7 +25,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.Models
 
         public override bool IsValid()
         {
-            ValidationResult = new PatientDomainValidation().Validate(this);
+            ValidationResult = new PatientValidation().Validate(this);
 
             return ValidationResult.IsValid;
         }

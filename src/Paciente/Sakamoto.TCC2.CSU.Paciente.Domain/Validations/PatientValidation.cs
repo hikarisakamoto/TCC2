@@ -1,41 +1,66 @@
 ﻿using System;
 using FluentValidation;
-using Sakamoto.TCC2.CSU.Patients.Domain.Commands;
+using Sakamoto.TCC2.CSU.Patients.Domain.Models;
 using Sakamoto.TCC2.CSU.Patients.Domain.ValueObjects;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
 {
-    public abstract class PatientValidation<T> : AbstractValidator<T> where T : PatientCommand
+    public class PatientValidation : AbstractValidator<Patient>
     {
-        protected void ValidateBirthDate()
+        public PatientValidation()
+        {
+            ValidateBirthDate();
+            ValidateCpf();
+            ValidateEmail();
+            ValidateCpfLength();
+            ValidateId();
+            ValidatePhone();
+            ValidateFullName();
+        }
+
+        private void ValidateBirthDate()
         {
             RuleFor(p => p.BirthDate)
                 .NotEmpty().WithMessage("Please fill patient's birthdate.")
                 .LessThanOrEqualTo(DateTime.Now).WithMessage("Please add valid birthdate.");
         }
 
-        protected void ValidateCpf()
+        private void ValidateCpf()
         {
             RuleFor(p => p.Cpf)
                 .Must(cpf => new CPF(cpf).IsValid()).WithMessage("Please insert a valid CPF.");
         }
 
-        protected void ValidateFullName()
+        private void ValidateCpfLength()
+        {
+            RuleFor(p => p.Cpf)
+                .Length(11).WithMessage("CPF must be 11 characters long.");
+        }
+
+        private void ValidateEmail()
+        {
+            RuleFor(p => p.Email)
+                .EmailAddress().WithMessage("Please insert a valid email.")
+                .MaximumLength(100).WithMessage("Email can't have more than 100 characters.");
+        }
+
+        private void ValidateFullName()
         {
             RuleFor(p => p.FullName)
                 .NotEmpty().WithMessage("Please ensure you have entered the full name")
                 .Length(2, 150).WithMessage("Patient name must have between 2 and 150 characters");
         }
 
-        protected void ValidateId()
+        private void ValidateId()
         {
             RuleFor(p => p.Id)
-                .NotEqual(Guid.Empty).WithMessage("Invalid ID.");
+                .NotEqual(Guid.Empty);
         }
 
-        protected void ValidatePhone()
+        private void ValidatePhone()
         {
             RuleFor(p => p.Phone)
+                .MaximumLength(20).WithMessage("Phone number can't have more than 20 characters.")
                 .NotEmpty().WithMessage("Please add a phone number.")
                 .NotNull().WithMessage("Please add a phone number.");
         }

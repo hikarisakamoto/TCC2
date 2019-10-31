@@ -2,7 +2,7 @@
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
 {
-    public class RegisterNewPatientCommandValidation : PatientValidation<RegisterNewPatientCommand>
+    public class RegisterNewPatientCommandValidation : PatientCommandValidation<RegisterNewPatientCommand>
     {
         public RegisterNewPatientCommandValidation()
         {

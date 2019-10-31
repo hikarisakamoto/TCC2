@@ -2,7 +2,7 @@
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
 {
-    public class DeactivatePatientCommandValidation : PatientValidation<DeactivatePatientCommand>
+    public class DeactivatePatientCommandValidation : PatientCommandValidation<DeactivatePatientCommand>
     {
         public DeactivatePatientCommandValidation()
         {

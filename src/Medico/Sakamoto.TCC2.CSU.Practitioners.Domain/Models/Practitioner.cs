@@ -20,7 +20,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.Models
 
         public override bool IsValid()
         {
-            ValidationResult = new PractitionerDomainValidation().Validate(this);
+            ValidationResult = new PractitionerValidation().Validate(this);
 
             return ValidationResult.IsValid;
         }

@@ -14,7 +14,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.CommandHandlers
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
+        protected CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
             INotificationHandler<DomainNotification> domainNotifications)
         {
             _unitOfWork = unitOfWork;

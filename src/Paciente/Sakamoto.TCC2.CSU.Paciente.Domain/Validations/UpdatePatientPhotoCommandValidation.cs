@@ -3,7 +3,7 @@ using Sakamoto.TCC2.CSU.Patients.Domain.Commands;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.Validations
 {
-    public class UpdatePatientPhotoCommandValidation : PatientValidation<UpdatePatientPhotoCommand>
+    public class UpdatePatientPhotoCommandValidation : PatientCommandValidation<UpdatePatientPhotoCommand>
     {
         public UpdatePatientPhotoCommandValidation()
         {

@@ -4,9 +4,9 @@ using Sakamoto.TCC2.CSU.Practitioners.Domain.Models;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Domain.Validations
 {
-    public class PractitionerDomainValidation : AbstractValidator<Practitioner>
+    public class PractitionerValidation : AbstractValidator<Practitioner>
     {
-        public PractitionerDomainValidation()
+        public PractitionerValidation()
         {
             ValidateCrm();
             ValidateEmail();
