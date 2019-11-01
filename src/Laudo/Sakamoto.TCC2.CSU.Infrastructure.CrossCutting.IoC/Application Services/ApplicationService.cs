@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using Sakamoto.TCC2.CSU.MedicalRecord.Application.Interfaces;
+using Sakamoto.TCC2.CSU.MedicalRecord.Application.Services;
 
 namespace Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.IoC.Application_Services
 {
@@ -6,12 +9,10 @@ namespace Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.IoC.Application_Services
     {
         internal static void Register(IServiceCollection services)
         {
-            // Application
-            //services.AddScoped<IPatientAppService, PatientAppService>();
+            services.AddScoped<IMedicalReportAppService, MedicalReportAppService>();
 
-
-            //services.AddScoped<IMapper>(
-            //    sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            services.AddScoped<IMapper>(
+                sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
         }
     }
 }

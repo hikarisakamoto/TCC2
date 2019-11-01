@@ -10,6 +10,5 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC.Applic
         {
             services.AddScoped<IPractitionerAppService, PractitionerAppService>();
         }
-
     }
 }

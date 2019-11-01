@@ -8,4 +8,9 @@
     <PackageReference Include="AutoMapper" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Domain\Sakamoto.TCC2.CSU.MedicalRecord.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

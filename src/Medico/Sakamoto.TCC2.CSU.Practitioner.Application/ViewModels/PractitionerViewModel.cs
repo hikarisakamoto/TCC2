@@ -14,7 +14,7 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Application.ViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Expretise is required")]
+        [Required(ErrorMessage = "Expertise is required")]
         [MaxLength(300)]
         public string Expertise { get; set; }
 

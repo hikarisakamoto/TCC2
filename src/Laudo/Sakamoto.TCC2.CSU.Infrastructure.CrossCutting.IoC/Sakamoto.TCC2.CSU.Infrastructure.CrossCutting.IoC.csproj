@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
   </ItemGroup>
@@ -12,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus\Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Application\Sakamoto.TCC2.CSU.MedicalRecord.Application.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Domain\Sakamoto.TCC2.CSU.MedicalRecord.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -72,7 +72,10 @@ namespace Sakamoto.TCC2.CSU.Patient.Web
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "CSU - Patient API", Version = "v1"});
+            });
 
             // Adding MediatR for Domain Events and Notifications
             services.AddMediatR(typeof(Startup));

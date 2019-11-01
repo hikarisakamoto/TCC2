@@ -16,7 +16,6 @@ namespace Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.IoC.Infrastructure_Servi
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
             // Infra - Data
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

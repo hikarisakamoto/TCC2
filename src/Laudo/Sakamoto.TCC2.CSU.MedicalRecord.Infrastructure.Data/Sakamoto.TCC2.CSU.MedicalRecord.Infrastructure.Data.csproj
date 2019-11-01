@@ -9,7 +9,16 @@
     <Folder Include="Mappings\" />
     <Folder Include="Migrations\" />
     <Folder Include="UnitOfWork\" />
-    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.9.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Domain\Sakamoto.TCC2.CSU.MedicalRecord.Domain.csproj" />
   </ItemGroup>
 
 </Project>

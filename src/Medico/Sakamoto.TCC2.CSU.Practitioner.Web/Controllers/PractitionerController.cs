@@ -12,14 +12,17 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
     public class PractitionerController : BaseController
     {
         private readonly IPractitionerAppService _practitionerAppService;
-        public PractitionerController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediator, IPractitionerAppService practitionerAppService) : base(notifications, mediator)
+
+        public PractitionerController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediator,
+            IPractitionerAppService practitionerAppService) : base(notifications, mediator)
         {
             _practitionerAppService = practitionerAppService;
         }
 
         [HttpDelete]
         [Route("practitioner-management-deactivate")]
-        public async Task<IActionResult> DeactivatePractitioner([FromBody] DeactivatePractitionerViewModel practitionerViewModel)
+        public async Task<IActionResult> DeactivatePractitioner(
+            [FromBody] DeactivatePractitionerViewModel practitionerViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -64,21 +67,6 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
         }
 
         [HttpPut]
-        [Route("practitioner-management-update-phone")]
-        public async Task<IActionResult> UpdatePractitionerPhone(
-            [FromBody] UpdatePractitionerPhoneViewModel practitionerViewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                NotifyModelStateErrors();
-                return Response(practitionerViewModel);
-            }
-
-            _practitionerAppService.UpdatePhone(practitionerViewModel);
-            return Response(practitionerViewModel);
-        }
-
-        [HttpPut]
         [Route("practitioner-management-update-email")]
         public async Task<IActionResult> UpdatePractitionerEmail(
             [FromBody] UpdatePractitionerEmailViewModel practitionerViewModel)
@@ -90,6 +78,21 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
             }
 
             _practitionerAppService.UpdateEmail(practitionerViewModel);
+            return Response(practitionerViewModel);
+        }
+
+        [HttpPut]
+        [Route("practitioner-management-update-phone")]
+        public async Task<IActionResult> UpdatePractitionerPhone(
+            [FromBody] UpdatePractitionerPhoneViewModel practitionerViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                NotifyModelStateErrors();
+                return Response(practitionerViewModel);
+            }
+
+            _practitionerAppService.UpdatePhone(practitionerViewModel);
             return Response(practitionerViewModel);
         }
     }
