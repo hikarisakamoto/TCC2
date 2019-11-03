@@ -2,9 +2,9 @@
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations
 {
-    public class AddNewMedicalReportCommandValidation : MedicalReportCommandValidation<AddNewMedicalReportCommand>
+    public class AddNewMedicalRecordCommandValidation : MedicalRecordCommandValidation<AddNewMedicalRecordCommand>
     {
-        public AddNewMedicalReportCommandValidation()
+        public AddNewMedicalRecordCommandValidation()
         {
             ValidateLongDescription();
             ValidatePatientId();

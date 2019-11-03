@@ -3,9 +3,9 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands
 {
-    public class AddNewMedicalReportCommand : MedicalReportCommand
+    public class AddNewMedicalRecordCommand : MedicalReportCommand
     {
-        public AddNewMedicalReportCommand(string longDescription, Patient patient, Practitioner practitioner,
+        public AddNewMedicalRecordCommand(string longDescription, Patient patient, Practitioner practitioner,
             string shortDescription)
         {
             LongDescription = longDescription;
@@ -16,7 +16,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands
 
         public override bool IsValid()
         {
-            ValidationResult = new AddNewMedicalReportCommandValidation().Validate(this);
+            ValidationResult = new AddNewMedicalRecordCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

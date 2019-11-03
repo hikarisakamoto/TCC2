@@ -19,7 +19,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands
 
         public override bool IsValid()
         {
-            ValidationResult = new AddNewMedicalReportWithImageCommandValidation().Validate(this);
+            ValidationResult = new AddNewMedicalRecordWithImageCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

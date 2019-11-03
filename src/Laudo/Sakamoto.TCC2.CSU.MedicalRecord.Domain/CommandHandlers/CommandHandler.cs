@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using System.Threading.Tasks;
+using FluentValidation.Results;
 using MediatR;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
 using Sakamoto.TCC2.CSU.Domain.Core.Commands;
@@ -11,24 +12,20 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.CommandHandlers
     {
         private readonly IMediatorHandler _bus;
         private readonly DomainNotificationHandler _domainNotifications;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMedicalRecordRepository _medicalRecordRepository;
 
 
-        protected CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
+        protected CommandHandler(IMedicalRecordRepository medicalRecordRepository, IMediatorHandler bus,
             INotificationHandler<DomainNotification> domainNotifications)
         {
-            _unitOfWork = unitOfWork;
+            _medicalRecordRepository = medicalRecordRepository;
             _bus = bus;
             _domainNotifications = (DomainNotificationHandler) domainNotifications;
         }
 
-        protected bool Commit()
+        protected async Task<bool> Commit()
         {
-            if (_domainNotifications.HasNotifications()) return false;
-            if (_unitOfWork.Commit()) return true;
-
-            _bus.RaiseEvent(new DomainNotification("Commit", "Error commiting your data, please verify."));
-            return false;
+            return !_domainNotifications.HasNotifications();
         }
 
         protected void NotifyValidationErrors(Command message)

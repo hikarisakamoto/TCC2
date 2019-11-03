@@ -4,7 +4,7 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Models;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations
 {
-    public class MedicalRecordValidation : AbstractValidator<MedicalReport>
+    public class MedicalRecordValidation : AbstractValidator<Models.MedicalRecord>
     {
         public MedicalRecordValidation()
         {

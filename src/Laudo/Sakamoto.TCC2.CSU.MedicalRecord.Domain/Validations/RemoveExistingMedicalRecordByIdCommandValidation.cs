@@ -5,9 +5,9 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands;
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations
 {
     public class
-        RemoveExistingMedicalReportByIdCommandValidation : AbstractValidator<RemoveExistingMedicalReportByIdCommand>
+        RemoveExistingMedicalRecordByIdCommandValidation : AbstractValidator<RemoveExistingMedicalRecordtByIdCommand>
     {
-        public RemoveExistingMedicalReportByIdCommandValidation()
+        public RemoveExistingMedicalRecordByIdCommandValidation()
         {
             ValidateId();
             ValidatePatientId();
@@ -17,7 +17,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations
         private void ValidateId()
         {
             RuleFor(p => p.MedicalReportId)
-                .NotEqual(Guid.Empty).WithMessage("Medical Report ID is empty");
+                .NotEqual(Guid.Empty).WithMessage("Medical Record ID is empty");
         }
 
         private void ValidatePatientId()

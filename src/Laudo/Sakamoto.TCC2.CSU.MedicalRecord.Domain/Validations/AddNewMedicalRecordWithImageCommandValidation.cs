@@ -4,10 +4,10 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands;
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations
 {
     public class
-        AddNewMedicalReportWithImageCommandValidation : MedicalReportCommandValidation<
+        AddNewMedicalRecordWithImageCommandValidation : MedicalRecordCommandValidation<
             AddNewMedicalReportWithImageCommand>
     {
-        public AddNewMedicalReportWithImageCommandValidation()
+        public AddNewMedicalRecordWithImageCommandValidation()
         {
             ValidateImage();
             ValidateLongDescription();

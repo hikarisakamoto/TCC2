@@ -4,9 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Application.ViewModel
 {
-    public class AddNewMedicalReportViewModel
+    public class AddNewMedicalRecordWithImageViewModel
     {
         [Key] public Guid Id { get; set; }
+
+        [Required(ErrorMessage = "Image is required")]
+        public byte[] Image { get; set; }
 
         [Required(ErrorMessage = "Long description is required")]
         [MinLength(30)]

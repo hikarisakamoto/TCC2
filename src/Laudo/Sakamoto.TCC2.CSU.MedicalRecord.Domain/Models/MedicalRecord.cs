@@ -4,9 +4,9 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Models
 {
-    public class MedicalReport : Entity
+    public class MedicalRecord : Entity
     {
-        private MedicalReport()
+        private MedicalRecord()
         {
         }
 
@@ -28,53 +28,53 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Models
 
         public class Builder
         {
-            private readonly MedicalReport _medicalReport;
+            private readonly MedicalRecord _medicalRecord;
 
             public Builder()
             {
-                _medicalReport = new MedicalReport
+                _medicalRecord = new MedicalRecord
                 {
                     Id = Guid.NewGuid(),
                     Date = DateTime.Now
                 };
             }
 
-            public MedicalReport Build()
+            public MedicalRecord Build()
             {
-                return _medicalReport;
+                return _medicalRecord;
             }
 
             public Builder WithImage(byte[] image)
             {
-                _medicalReport.Image = image;
+                _medicalRecord.Image = image;
                 return this;
             }
 
             public Builder WithLongDescription(string longDescription)
             {
-                _medicalReport.LongDescription = longDescription;
+                _medicalRecord.LongDescription = longDescription;
                 return this;
             }
 
             public Builder WithPatient(Patient patient)
             {
-                _medicalReport.PatientId = patient.Id;
-                _medicalReport.PatientName = patient.FullName;
+                _medicalRecord.PatientId = patient.Id;
+                _medicalRecord.PatientName = patient.FullName;
 
                 return this;
             }
 
             public Builder WithPractitioner(Practitioner practitioner)
             {
-                _medicalReport.PractitionerId = practitioner.Id;
-                _medicalReport.PractitionerName = practitioner.FullName;
+                _medicalRecord.PractitionerId = practitioner.Id;
+                _medicalRecord.PractitionerName = practitioner.FullName;
 
                 return this;
             }
 
             public Builder WithShortDescription(string shortDescription)
             {
-                _medicalReport.ShortDescription = shortDescription;
+                _medicalRecord.ShortDescription = shortDescription;
                 return this;
             }
         }

@@ -3,9 +3,9 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands
 {
-    public class RemoveExistingMedicalReportByIdCommand : MedicalReportCommand
+    public class RemoveExistingMedicalRecordtByIdCommand : MedicalReportCommand
     {
-        public RemoveExistingMedicalReportByIdCommand(Guid medicalReportId, Guid practitionerId, Guid patientId)
+        public RemoveExistingMedicalRecordtByIdCommand(Guid medicalReportId, Guid practitionerId, Guid patientId)
         {
             MedicalReportId = medicalReportId;
             PractitionerId = practitionerId;
@@ -18,7 +18,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands
 
         public override bool IsValid()
         {
-            ValidationResult = new RemoveExistingMedicalReportByIdCommandValidation().Validate(this);
+            ValidationResult = new RemoveExistingMedicalRecordByIdCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

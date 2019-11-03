@@ -2,7 +2,7 @@
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Application.ViewModel
 {
-    public class RemoveExistingMedicalReportByIdViewModel
+    public class RemoveExistingMedicalRecordByIdViewModel
     {
         public Guid MedicalReportId { get; set; }
         public Guid PatientId { get; set; }

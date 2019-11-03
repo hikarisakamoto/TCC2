@@ -6,36 +6,34 @@ using Sakamoto.TCC2.CSU.Domain.Core.Notifications;
 using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Commands;
 using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Events;
 using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Interfaces;
-using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Models;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.CommandHandlers
 {
     public class MedicalReportCommandHandler : CommandHandler,
-        IRequestHandler<AddNewMedicalReportCommand, bool>,
+        IRequestHandler<AddNewMedicalRecordCommand, bool>,
         IRequestHandler<AddNewMedicalReportWithImageCommand, bool>,
-        IRequestHandler<RemoveExistingMedicalReportByIdCommand, bool>
+        IRequestHandler<RemoveExistingMedicalRecordtByIdCommand, bool>
 
     {
         private readonly IMediatorHandler _bus;
-        private readonly IMedicalReportRepository _medicalReportRepository;
+        private readonly IMedicalRecordRepository _medicalRecordRepository;
 
-        public MedicalReportCommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus,
-            INotificationHandler<DomainNotification> domainNotifications,
-            IMedicalReportRepository medicalReportRepository) : base(unitOfWork, bus, domainNotifications)
+        public MedicalReportCommandHandler(IMedicalRecordRepository medicalRecordRepository, IMediatorHandler bus,
+            INotificationHandler<DomainNotification> domainNotifications) : base(medicalRecordRepository, bus, domainNotifications)
         {
             _bus = bus;
-            _medicalReportRepository = medicalReportRepository;
+            _medicalRecordRepository = medicalRecordRepository;
         }
 
-        public Task<bool> Handle(AddNewMedicalReportCommand message, CancellationToken cancellationToken)
+        public async Task<bool> Handle(AddNewMedicalRecordCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
 
-            var medicalReport = new MedicalReport.Builder()
+            var medicalReport = new Models.MedicalRecord.Builder()
                 .WithPatient(message.Patient)
                 .WithPractitioner(message.Practitioner)
                 .WithShortDescription(message.ShortDescription)
@@ -46,26 +44,26 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.CommandHandlers
             if (!medicalReport.IsValid())
             {
                 NotifyValidationErrors(medicalReport.ValidationResult);
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
 
-            _medicalReportRepository.Add(medicalReport);
+            _medicalRecordRepository.Add(medicalReport);
 
-            if (Commit())
-                _bus.RaiseEvent(new MedicalReportAddedEvent(medicalReport));
+            if (await Commit())
+                await _bus.RaiseEvent(new MedicalReportAddedEvent(medicalReport));
 
-            return Task.FromResult(true);
+            return await Task.FromResult(true);
         }
 
-        public Task<bool> Handle(AddNewMedicalReportWithImageCommand message, CancellationToken cancellationToken)
+        public async Task<bool> Handle(AddNewMedicalReportWithImageCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
 
-            var medicalReport = new MedicalReport.Builder()
+            var medicalReport = new Models.MedicalRecord.Builder()
                 .WithPatient(message.Patient)
                 .WithPractitioner(message.Practitioner)
                 .WithShortDescription(message.ShortDescription)
@@ -77,18 +75,18 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.CommandHandlers
             if (!medicalReport.IsValid())
             {
                 NotifyValidationErrors(medicalReport.ValidationResult);
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
 
-            _medicalReportRepository.Add(medicalReport);
+            _medicalRecordRepository.Add(medicalReport);
 
-            if (Commit())
-                _bus.RaiseEvent(new MedicalReportWithImageAddedEvent(medicalReport));
+            if (await Commit())
+                await _bus.RaiseEvent(new MedicalReportWithImageAddedEvent(medicalReport));
 
-            return Task.FromResult(true);
+            return await Task.FromResult(true);
         }
 
-        public async Task<bool> Handle(RemoveExistingMedicalReportByIdCommand message,
+        public async Task<bool> Handle(RemoveExistingMedicalRecordtByIdCommand message,
             CancellationToken cancellationToken)
         {
             if (!message.IsValid())
@@ -97,21 +95,21 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.CommandHandlers
                 return await Task.FromResult(false);
             }
 
-            var medicalReport = await _medicalReportRepository.GetByRemovalParamaters(message.MedicalReportId,
+            var medicalReport = _medicalRecordRepository.GetByRemovalParamaters(message.MedicalReportId,
                 message.PatientId, message.PractitionerId);
 
             if (medicalReport == null)
             {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType,
+                await _bus.RaiseEvent(new DomainNotification(message.MessageType,
                     "No report return from the query, please verify."));
                 return await Task.FromResult(false);
             }
 
 
-            _medicalReportRepository.Remove(medicalReport.Id);
+            _medicalRecordRepository.Remove(medicalReport.Id);
 
-            if (Commit())
-                _bus.RaiseEvent(new MedicalReportRemovedEvent(message.MedicalReportId, message.PatientId,
+            if (await Commit())
+                await _bus.RaiseEvent(new MedicalReportRemovedEvent(message.MedicalReportId, message.PatientId,
                     message.PractitionerId));
 
             return await Task.FromResult(true);

@@ -17,16 +17,16 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Application.AutoMapper
                 .ConstructUsing(p =>
                     new Practitioner(p.PractitionerId, p.FullName));
 
-            CreateMap<AddNewMedicalReportViewModel, AddNewMedicalReportCommand>()
+            CreateMap<AddNewMedicalRecordViewModel, AddNewMedicalRecordCommand>()
                 .ConvertUsing(mr =>
-                    new AddNewMedicalReportCommand(mr.LongDescription,
+                    new AddNewMedicalRecordCommand(mr.LongDescription,
                         new Patient(mr.Patient.PatientId, mr.Patient.FullName),
                         new Practitioner(mr.Practitioner.PractitionerId, mr.Practitioner.FullName),
                         mr.ShortDescription));
 
-            CreateMap<RemoveExistingMedicalReportByIdViewModel, RemoveExistingMedicalReportByIdCommand>()
+            CreateMap<RemoveExistingMedicalRecordByIdViewModel, RemoveExistingMedicalRecordtByIdCommand>()
                 .ConstructUsing(mr =>
-                    new RemoveExistingMedicalReportByIdCommand(mr.MedicalReportId, mr.PractitionerId, mr.PatientId));
+                    new RemoveExistingMedicalRecordtByIdCommand(mr.MedicalReportId, mr.PractitionerId, mr.PatientId));
         }
     }
 }

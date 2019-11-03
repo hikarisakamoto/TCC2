@@ -8,7 +8,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Application.AutoMapper
     {
         public DomainToViewModelMapping()
         {
-            CreateMap<MedicalReport, MedicalReportViewModel>();
+            CreateMap<Domain.Models.MedicalRecord, MedicalRecordViewModel>();
             CreateMap<Practitioner, PractitionerViewModel>();
             CreateMap<Patient, PatientViewModel>();
         }

@@ -15,6 +15,7 @@
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus\Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Application\Sakamoto.TCC2.CSU.MedicalRecord.Application.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Domain\Sakamoto.TCC2.CSU.MedicalRecord.Domain.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data\Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,12 +5,12 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Events
 {
     public class MedicalReportAddedEvent : Event
     {
-        public MedicalReportAddedEvent(MedicalReport medicalReport)
+        public MedicalReportAddedEvent(Models.MedicalRecord medicalRecord)
         {
-            MedicalReport = medicalReport;
-            AggregateId = medicalReport.Id;
+            MedicalRecord = medicalRecord;
+            AggregateId = medicalRecord.Id;
         }
 
-        public MedicalReport MedicalReport { get; }
+        public Models.MedicalRecord MedicalRecord { get; }
     }
 }

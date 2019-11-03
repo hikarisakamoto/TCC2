@@ -9,94 +9,94 @@ using Sakamoto.TCC2.CSU.MedicalRecord.Application.ViewModel;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Web.Controllers
 {
-    public class MedicalReportController : BaseController
+    public class MedicalRecordController : BaseController
     {
-        private readonly IMedicalReportAppService _medicalReportAppService;
+        private readonly IMedicalRecordAppService _medicalRecordAppService;
 
-        public MedicalReportController(INotificationHandler<DomainNotification> notifications,
-            IMediatorHandler mediator, IMedicalReportAppService medicalReportAppService) : base(notifications, mediator)
+        public MedicalRecordController(INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator, IMedicalRecordAppService medicalRecordAppService) : base(notifications, mediator)
         {
-            _medicalReportAppService = medicalReportAppService;
+            _medicalRecordAppService = medicalRecordAppService;
         }
 
         [HttpPost]
-        [Route("medical-report")]
-        public async Task<IActionResult> AddNewMedicalReport(
-            [FromBody] AddNewMedicalReportViewModel medicalReportViewModel)
+        [Route("medical-record-simple")]
+        public async Task<IActionResult> AddNewMedicalRecord(
+            [FromBody] AddNewMedicalRecordViewModel medicalRecordViewModel)
         {
             if (!ModelState.IsValid)
             {
                 NotifyModelStateErrors();
-                return Response(medicalReportViewModel);
+                return Response(medicalRecordViewModel);
             }
 
-            _medicalReportAppService.Add(medicalReportViewModel);
-            return Response(medicalReportViewModel);
+            _medicalRecordAppService.Add(medicalRecordViewModel);
+            return Response(medicalRecordViewModel);
         }
 
         [HttpPost]
-        [Route("medical-report")]
-        public async Task<IActionResult> AddNewMedicalReportWithImage(
-            [FromBody] AddNewMedicalReportWithImageViewModel medicalReportViewModel)
+        [Route("medical-record-with-image")]
+        public async Task<IActionResult> AddNewMedicalRecordWithImage(
+            [FromBody] AddNewMedicalRecordWithImageViewModel medicalRecordViewModel)
         {
             if (!ModelState.IsValid)
             {
                 NotifyModelStateErrors();
-                return Response(medicalReportViewModel);
+                return Response(medicalRecordViewModel);
             }
 
-            _medicalReportAppService.Add(medicalReportViewModel);
-            return Response(medicalReportViewModel);
+            _medicalRecordAppService.Add(medicalRecordViewModel);
+            return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
-        [Route("medical-report/{id:guid}")]
-        public async Task<IActionResult> GetMedicalReportByIdTask([FromBody] Guid id)
+        [Route("medical-record/{id:guid}")]
+        public async Task<IActionResult> GetMedicalRecordByIdTask([FromBody] Guid id)
         {
-            var medicalReportViewModel = _medicalReportAppService.GetById(id);
-            return Response(medicalReportViewModel);
+            var medicalRecordViewModel = _medicalRecordAppService.GetById(id);
+            return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
-        [Route("medical-report/patient/{id:guid}")]
-        public async Task<IActionResult> GetMedicalReportByPatientId([FromBody] Guid id)
+        [Route("medical-record/patient/{id:guid}")]
+        public async Task<IActionResult> GetMedicalRecordByPatientId([FromBody] Guid id)
         {
-            var medicalReportViewModel = _medicalReportAppService.GetByPatientId(id);
-            return Response(medicalReportViewModel);
+            var medicalRecordViewModel = _medicalRecordAppService.GetByPatientId(id);
+            return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
-        [Route("medical-report/practitioner/{id:guid}")]
-        public async Task<IActionResult> GetMedicalReportByPractitionerId([FromBody] Guid id)
+        [Route("medical-record/practitioner/{id:guid}")]
+        public async Task<IActionResult> GetMedicalRecordByPractitionerId([FromBody] Guid id)
         {
-            var medicalReportViewModel = _medicalReportAppService.GetByPractitionerId(id);
-            return Response(medicalReportViewModel);
+            var medicalRecordViewModel = _medicalRecordAppService.GetByPractitionerId(id);
+            return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
-        [Route("medical-report/practitioner/{practitionerId:guid}/patient/{patientId:guid}")]
-        public async Task<IActionResult> GetMedicalReportByPractitionerId([FromBody] Guid practitionerId,
+        [Route("medical-record/practitioner/{practitionerId:guid}/patient/{patientId:guid}")]
+        public async Task<IActionResult> GetMedicalRecordByPractitionerId([FromBody] Guid practitionerId,
             [FromBody] Guid patientId)
         {
-            var medicalReportViewModel =
-                _medicalReportAppService.GetByPractitionerIdAndPatientId(practitionerId, patientId);
-            return Response(medicalReportViewModel);
+            var medicalRecordViewModel =
+                _medicalRecordAppService.GetByPractitionerIdAndPatientId(practitionerId, patientId);
+            return Response(medicalRecordViewModel);
         }
 
         [HttpDelete]
-        [Route("medical-report-management-remove")]
-        public async Task<IActionResult> RemoveExistingMedicalReportById(
-            [FromBody] RemoveExistingMedicalReportByIdViewModel medicalReportViewModel)
+        [Route("medical-record-management-remove")]
+        public async Task<IActionResult> RemoveExistingMedicalRecordById(
+            [FromBody] RemoveExistingMedicalRecordByIdViewModel medicalRecordViewModel)
         {
             if (!ModelState.IsValid)
             {
                 NotifyModelStateErrors();
-                return Response(medicalReportViewModel);
+                return Response(medicalRecordViewModel);
             }
 
-            _medicalReportAppService.Remove(medicalReportViewModel);
+            _medicalRecordAppService.Remove(medicalRecordViewModel);
 
-            return Response(medicalReportViewModel);
+            return Response(medicalRecordViewModel);
         }
     }
 }
