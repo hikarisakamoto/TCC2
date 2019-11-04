@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Sakamoto.TCC2.CSU.Practitioner.Application.AutoMapper;
+using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.Bus.Configurations;
 using Sakamoto.TCC2.CSU.Practitioners.Infrastructure.CrossCutting.IoC;
 
 namespace Sakamoto.TCC2.CSU.Practitioner.Web
@@ -81,6 +82,8 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web
             services.AddMediatR(typeof(Startup));
 
             // .NET Native DI Abstraction
+            services.Configure<MessageConfigurations>(
+                Configuration.GetSection(nameof(MessageConfigurations)));
             services.Register();
 
             services.AddControllers();

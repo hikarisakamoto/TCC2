@@ -18,8 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain.Core", "Domain.Core"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Domain.Core", "src\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj", "{58468965-F06E-4C82-9428-769E6A083020}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventStore.Database", "EventStore.Database", "{8FD92D33-E652-4D97-9F24-F7D017AB1BE5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,7 +41,6 @@ Global
 		{DE23AD71-74DE-4756-88ED-FE53E0A1921E} = {3EF97C70-A0E0-47D6-8D5B-FC8F4FE20B36}
 		{95497574-6E42-46BF-A6BC-324FDB078A32} = {606C8E12-1C89-44DD-9751-468FD38B1A77}
 		{58468965-F06E-4C82-9428-769E6A083020} = {95497574-6E42-46BF-A6BC-324FDB078A32}
-		{8FD92D33-E652-4D97-9F24-F7D017AB1BE5} = {606C8E12-1C89-44DD-9751-468FD38B1A77}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD29908-31AA-4C5E-918C-244B7F566A48}

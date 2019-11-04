@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus.Configurations;
 using Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.IoC;
 using Sakamoto.TCC2.CSU.MedicalRecord.Application.AutoMapper;
 using Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Context;
@@ -84,6 +85,8 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web
             services.AddMediatR(typeof(Startup));
 
             // .NET Native DI Abstraction
+            services.Configure<MessageConfigurations>(
+                Configuration.GetSection(nameof(MessageConfigurations)));
             services.Configure<DatabaseSettings>(
                 Configuration.GetSection(nameof(DatabaseSettings)));
             services.Register();

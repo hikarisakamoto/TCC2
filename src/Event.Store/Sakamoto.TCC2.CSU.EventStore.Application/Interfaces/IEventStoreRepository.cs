@@ -1,10 +1,12 @@
-﻿using Sakamoto.TCC2.CSU.Domain.Core.Events;
+﻿using System;
+using System.Collections.Generic;
+using Sakamoto.TCC2.CSU.EventStore.Application.Models;
 
 namespace Sakamoto.TCC2.CSU.EventStore.Application.Interfaces
 {
     public interface IEventStoreRepository
     {
-        void Save<T>(T theEvent) where T : Event;
-
+        IList<StoredEvents> All(Guid aggregateId);
+        void Save(StoredEvents theEvent);
     }
 }

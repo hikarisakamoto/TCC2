@@ -1,7 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Newtonsoft.Json;
+using Sakamoto.TCC2.CSU.Domain.Core.Events;
 using Sakamoto.TCC2.CSU.Practitioners.Domain.Events;
+using Sakamoto.TCC2.CSU.Practitioners.Domain.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers
 {
@@ -11,30 +14,42 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers
         INotificationHandler<PractitionerPhoneUpdatedEvent>,
         INotificationHandler<PractitionerEmailUpdatedEvent>
     {
-        public Task Handle(PractitionerDeactivatedEvent notification, CancellationToken cancellationToken)
+        private readonly IMessageEventHandler _eventHandler;
+
+        public PractitionerEventHandler(IMessageEventHandler eventHandler)
         {
-            // TODO SEND PRACTITIONER DEACTIVATED MESSAGE
+            _eventHandler = eventHandler;
+        }
+        // TODO - REMOVE DEPENDENCY FROM JSON CONVERT
+
+        public Task Handle(PractitionerDeactivatedEvent @event, CancellationToken cancellationToken)
+        {
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PractitionerEmailUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PractitionerEmailUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PRACTITIONER EMAIL UPDATED MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PractitionerPhoneUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PractitionerPhoneUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PRACTITIONER PHONE UPDATED MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PractitionerRegisteredEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PractitionerRegisteredEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PRACTITIONER REGISTERED MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }

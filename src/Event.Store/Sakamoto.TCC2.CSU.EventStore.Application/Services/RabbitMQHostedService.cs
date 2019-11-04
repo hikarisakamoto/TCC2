@@ -9,9 +9,9 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Sakamoto.TCC2.CSU.Domain.Core.Events;
 using Sakamoto.TCC2.CSU.EventStore.Application.Configurations;
 using Sakamoto.TCC2.CSU.EventStore.Application.Interfaces;
+using Sakamoto.TCC2.CSU.EventStore.Application.Models;
 
 namespace Sakamoto.TCC2.CSU.EventStore.Application.Services
 {
@@ -61,7 +61,7 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application.Services
 
         private void HandleMessage(string content)
         {
-            var message = JsonConvert.DeserializeObject<StoredEvent>(content);
+            var message = JsonConvert.DeserializeObject<StoredEvents>(content);
             _eventStoreRepository.Save(message);
         }
 

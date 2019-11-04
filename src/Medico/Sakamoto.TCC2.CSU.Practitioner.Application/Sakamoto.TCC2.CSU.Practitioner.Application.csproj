@@ -9,7 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
+    <ProjectReference
+      Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Practitioners.Domain\Sakamoto.TCC2.CSU.Practitioners.Domain.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Newtonsoft.Json;
+using Sakamoto.TCC2.CSU.Domain.Core.Events;
 using Sakamoto.TCC2.CSU.Patients.Domain.Events;
+using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 {
@@ -12,53 +15,68 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
         , INotificationHandler<PatientPhoneUpdatedEvent>
         , INotificationHandler<PatientPhotoUpdatedEvent>
         , INotificationHandler<PatientHeartRateUpdatedEvent>
-
     {
-        public Task Handle(PatientAddressUpdatedEvent notification, CancellationToken cancellationToken)
+        private readonly IMessageEventHandler _eventHandler;
+
+        public PatientEventHandler(IMessageEventHandler eventHandler)
         {
-            // TODO SEND PATIENT ADDRESS UPDATED EVENT MESSAGE
+            _eventHandler = eventHandler;
+        }
+
+        // TODO - REMOVE DEPENDENCY FROM JSON CONVERT
+
+        public Task Handle(PatientAddressUpdatedEvent @event, CancellationToken cancellationToken)
+        {
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientDeactivatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientDeactivatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT DEACTIVATED EVENT MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientEmailUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientEmailUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT EMAIL UPDATED EVENT MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientHeartRateUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientHeartRateUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT HEART RATE UPDATED EVENT MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientPhoneUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientPhoneUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT PHONE UPDATED EVENT MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientPhotoUpdatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientPhotoUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT PHOTO UPDATED EVENT MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(PatientRegisteredEvent notification, CancellationToken cancellationToken)
+        public Task Handle(PatientRegisteredEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND PATIENT REGISTERED EVENT MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }

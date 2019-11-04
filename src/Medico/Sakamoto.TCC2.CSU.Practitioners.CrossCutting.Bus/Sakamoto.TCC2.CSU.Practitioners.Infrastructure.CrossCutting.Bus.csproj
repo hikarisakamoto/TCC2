@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj" />
+    <ProjectReference Include="..\Sakamoto.TCC2.CSU.Practitioners.Domain\Sakamoto.TCC2.CSU.Practitioners.Domain.csproj" />
   </ItemGroup>
 
 </Project>

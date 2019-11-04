@@ -1,7 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Newtonsoft.Json;
+using Sakamoto.TCC2.CSU.Domain.Core.Events;
 using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Events;
+using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Interfaces;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.EventHandlers
 {
@@ -10,23 +13,35 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.EventHandlers
         INotificationHandler<MedicalReportWithImageAddedEvent>,
         INotificationHandler<MedicalReportRemovedEvent>
     {
-        public Task Handle(MedicalReportAddedEvent notification, CancellationToken cancellationToken)
+        private readonly IMessageEventHandler _eventHandler;
+
+        public MedicalReportEventHandler(IMessageEventHandler eventHandler)
         {
-            // TODO SEND MESSAGE
+            _eventHandler = eventHandler;
+        }
+        // TODO - REMOVE DEPENDENCY FROM JSON CONVERT
+
+
+        public Task Handle(MedicalReportAddedEvent @event, CancellationToken cancellationToken)
+        {
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(MedicalReportRemovedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(MedicalReportRemovedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(MedicalReportWithImageAddedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(MedicalReportWithImageAddedEvent @event, CancellationToken cancellationToken)
         {
-            // TODO SEND MESSAGE
+            var data = JsonConvert.SerializeObject(@event);
+            _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
         }
