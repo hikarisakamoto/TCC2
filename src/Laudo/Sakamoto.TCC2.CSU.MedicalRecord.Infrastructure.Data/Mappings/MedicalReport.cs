@@ -1,5 +1,4 @@
 ﻿using System;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Mappings
@@ -8,8 +7,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Mappings
     {
         [BsonElement("Date")] [BsonRequired] public DateTime Date { get; set; }
 
-        [BsonId]
-        public Guid Id { get; set; }
+        [BsonId] public Guid Id { get; set; }
 
         [BsonElement("image")] public byte[] Image { get; set; }
 

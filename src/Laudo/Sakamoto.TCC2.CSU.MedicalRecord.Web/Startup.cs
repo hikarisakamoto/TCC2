@@ -68,7 +68,8 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddAutoMapper(typeof(Startup), typeof(DomainToViewModelMapping), typeof(ViewModelToDomainMapping), typeof(DomainToRepository));
+            services.AddAutoMapper(typeof(Startup), typeof(DomainToViewModelMapping), typeof(ViewModelToDomainMapping),
+                typeof(DomainToRepository));
 
 
             services.AddControllers();
@@ -76,7 +77,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSU - Medical Report API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "CSU - Medical Report API", Version = "v1"});
             });
 
             // Adding MediatR for Domain Events and Notifications

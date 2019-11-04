@@ -1,6 +1,5 @@
 ﻿using System;
 using FluentValidation;
-using Sakamoto.TCC2.CSU.MedicalRecord.Domain.Models;
 
 namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Validations
 {

@@ -20,6 +20,11 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Repositories
             _dbSet = context.GetMongoDatabase().GetCollection<MedicalRecords>(databaseSettings.CollectionName);
         }
 
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
 
         public void Add(Domain.Models.MedicalRecord medicalRecord)
         {
@@ -29,8 +34,8 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Repositories
 
         public Domain.Models.MedicalRecord GetById(Guid id)
         {
-            return _mapper.Map<Domain.Models.MedicalRecord>(
-                _dbSet.Find(mr => mr.Id.Equals(id.ToString())));
+            return _mapper.Map<Domain.Models.MedicalRecord>(_dbSet.Find(mr => mr.Id.Equals(id)).FirstOrDefault()
+            );
         }
 
         public IEnumerable<Domain.Models.MedicalRecord> GetByPatientId(Guid patientId)
@@ -57,17 +62,12 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Repositories
         {
             return _mapper.Map<Domain.Models.MedicalRecord>(_dbSet.Find(mr =>
                 mr.PatientId.Equals(patientId) && mr.PractitionerId.Equals(practitionerId) &&
-                mr.Id.Equals(medicalReportId.ToString())));
+                mr.Id.Equals(medicalReportId)).FirstOrDefault());
         }
 
         public void Remove(Guid id)
         {
-            _dbSet.DeleteOne(mr => mr.Id.Equals(id.ToString()));
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
+            _dbSet.DeleteOne(mr => mr.Id.Equals(id));
         }
     }
 }

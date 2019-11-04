@@ -19,7 +19,8 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.CommandHandlers
         private readonly IMedicalRecordRepository _medicalRecordRepository;
 
         public MedicalReportCommandHandler(IMedicalRecordRepository medicalRecordRepository, IMediatorHandler bus,
-            INotificationHandler<DomainNotification> domainNotifications) : base(medicalRecordRepository, bus, domainNotifications)
+            INotificationHandler<DomainNotification> domainNotifications) : base(medicalRecordRepository, bus,
+            domainNotifications)
         {
             _bus = bus;
             _medicalRecordRepository = medicalRecordRepository;

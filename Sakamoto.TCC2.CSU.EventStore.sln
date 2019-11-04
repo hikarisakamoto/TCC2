@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Itens", "Solution Itens", "{960D4621-A686-41FF-9E38-D22FC2BE0B2C}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{606C8E12-1C89-44DD-9751-468FD38B1A77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventStoreApplication", "EventStoreApplication", "{3EF97C70-A0E0-47D6-8D5B-FC8F4FE20B36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.EventStore.Application", "src\Event.Store\Sakamoto.TCC2.CSU.EventStore.Application\Sakamoto.TCC2.CSU.EventStore.Application.csproj", "{DE23AD71-74DE-4756-88ED-FE53E0A1921E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain.Core", "Domain.Core", "{95497574-6E42-46BF-A6BC-324FDB078A32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sakamoto.TCC2.CSU.Domain.Core", "src\Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core\Sakamoto.TCC2.CSU.Domain.Core.csproj", "{58468965-F06E-4C82-9428-769E6A083020}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventStore.Database", "EventStore.Database", "{8FD92D33-E652-4D97-9F24-F7D017AB1BE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE23AD71-74DE-4756-88ED-FE53E0A1921E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE23AD71-74DE-4756-88ED-FE53E0A1921E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE23AD71-74DE-4756-88ED-FE53E0A1921E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE23AD71-74DE-4756-88ED-FE53E0A1921E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58468965-F06E-4C82-9428-769E6A083020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58468965-F06E-4C82-9428-769E6A083020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58468965-F06E-4C82-9428-769E6A083020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58468965-F06E-4C82-9428-769E6A083020}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3EF97C70-A0E0-47D6-8D5B-FC8F4FE20B36} = {606C8E12-1C89-44DD-9751-468FD38B1A77}
+		{DE23AD71-74DE-4756-88ED-FE53E0A1921E} = {3EF97C70-A0E0-47D6-8D5B-FC8F4FE20B36}
+		{95497574-6E42-46BF-A6BC-324FDB078A32} = {606C8E12-1C89-44DD-9751-468FD38B1A77}
+		{58468965-F06E-4C82-9428-769E6A083020} = {95497574-6E42-46BF-A6BC-324FDB078A32}
+		{8FD92D33-E652-4D97-9F24-F7D017AB1BE5} = {606C8E12-1C89-44DD-9751-468FD38B1A77}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BD29908-31AA-4C5E-918C-244B7F566A48}
+	EndGlobalSection
+EndGlobal
