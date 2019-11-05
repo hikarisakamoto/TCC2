@@ -87,6 +87,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web
             services.Register();
 
             services.AddControllers();
+            services.AddApplicationInsightsTelemetry();
         }
     }
 }

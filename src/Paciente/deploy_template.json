@@ -1,0 +1,190 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appService_Sakamoto-CSU-Patient_name": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_location": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_name": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_resourceGroup": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-Patient_location": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-Patient_type": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-Patient_hockeyAppToken": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-Patient_requestSource": {
+      "type": "string"
+    },
+    "dbserver_sakamoto-csu-patientdbserver_name": {
+      "type": "string"
+    },
+    "dbserver_sakamoto-csu-patientdbserver_adminlogin": {
+      "type": "string"
+    },
+    "dbserver_sakamoto-csu-patientdbserver_adminpassword": {
+      "type": "securestring"
+    },
+    "dbserver_sakamoto-csu-patientdbserver_location": {
+      "type": "string"
+    },
+    "dbserver_sakamoto-csu-patientdbserver_Sakamoto-CSU-Patient_db_name": {
+      "type": "string"
+    },
+    "dbserver_sakamoto-csu-patientdbserver_Sakamoto-CSU-Patient_db_location": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_skuName": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_skuTier": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_skuFamily": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_skuSize": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-Patient-hp_workerSizeId": {
+      "type": "int"
+    }
+  },
+  "resources": [
+    {
+      "location": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_location')]",
+      "name": "[parameters('appService_Sakamoto-CSU-Patient_name')]",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "tags": {
+        "[concat('hidden-related:', resourceId(parameters('appServicePlan_Sakamoto-CSU-Patient-hp_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_Sakamoto-CSU-Patient-hp_name')))]": "empty"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverFarms', parameters('appServicePlan_Sakamoto-CSU-Patient-hp_name'))]",
+        "[concat('Microsoft.Sql/servers/', parameters('dbserver_sakamoto-csu-patientdbserver_name'))]"
+      ],
+      "kind": "app",
+      "properties": {
+        "name": "[parameters('appService_Sakamoto-CSU-Patient_name')]",
+        "kind": "app",
+        "httpsOnly": true,
+        "serverFarmId": "[resourceId(parameters('appServicePlan_Sakamoto-CSU-Patient-hp_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_Sakamoto-CSU-Patient-hp_name'))]"
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', parameters('appService_Sakamoto-CSU-Patient_name'))]",
+            "[concat('microsoft.insights/components/', parameters('appService_Sakamoto-CSU-Patient_name'))]"
+          ],
+          "properties": {
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appService_Sakamoto-CSU-Patient_name'))).InstrumentationKey]",
+            "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0",
+            "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
+            "DiagnosticServices_EXTENSION_VERSION": "~3"
+          }
+        },
+        {
+          "name": "connectionstrings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', parameters('appService_Sakamoto-CSU-Patient_name'))]"
+          ],
+          "properties": {
+            "DefaultConnection": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('dbserver_sakamoto-csu-patientdbserver_name'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('dbserver_sakamoto-csu-patientdbserver_Sakamoto-CSU-Patient_db_name'), ';User Id=', parameters('dbserver_sakamoto-csu-patientdbserver_adminlogin'), '@', parameters('dbserver_sakamoto-csu-patientdbserver_name'), ';Password=', parameters('dbserver_sakamoto-csu-patientdbserver_adminpassword'))]",
+              "type": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "location": "[parameters('appInsightsComponentName_Sakamoto-CSU-Patient_location')]",
+      "name": "[parameters('appService_Sakamoto-CSU-Patient_name')]",
+      "type": "microsoft.insights/components",
+      "apiVersion": "2014-08-01",
+      "tags": {
+        "[concat('hidden-link:', concat('/providers/Microsoft.Web/sites/', parameters('appService_Sakamoto-CSU-Patient_name')))]": "Resource"
+      },
+      "properties": {
+        "ApplicationId": "[parameters('appService_Sakamoto-CSU-Patient_name')]",
+        "Application_Type": "[parameters('appInsightsComponentName_Sakamoto-CSU-Patient_type')]",
+        "HockeyAppToken": "[parameters('appInsightsComponentName_Sakamoto-CSU-Patient_hockeyAppToken')]",
+        "HockeyAppId": "[parameters('appInsightsComponentName_Sakamoto-CSU-Patient_hockeyAppToken')]",
+        "Flow_Type": "Redfield",
+        "Request_Source": "[parameters('appInsightsComponentName_Sakamoto-CSU-Patient_requestSource')]"
+      }
+    },
+    {
+      "location": "[parameters('dbserver_sakamoto-csu-patientdbserver_location')]",
+      "name": "[parameters('dbserver_sakamoto-csu-patientdbserver_name')]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2014-04-01-preview",
+      "properties": {
+        "administratorLogin": "[parameters('dbserver_sakamoto-csu-patientdbserver_adminlogin')]",
+        "administratorLoginPassword": "[parameters('dbserver_sakamoto-csu-patientdbserver_adminpassword')]"
+      },
+      "resources": [
+        {
+          "location": "[parameters('dbserver_sakamoto-csu-patientdbserver_location')]",
+          "name": "AllowAllAzureIPs",
+          "type": "firewallrules",
+          "apiVersion": "2014-04-01",
+          "dependsOn": [
+            "[concat('Microsoft.Sql/servers/', parameters('dbserver_sakamoto-csu-patientdbserver_name'))]"
+          ],
+          "properties": {
+            "endIpAddress": "0.0.0.0",
+            "startIpAddress": "0.0.0.0"
+          }
+        },
+        {
+          "location": "[parameters('dbserver_sakamoto-csu-patientdbserver_Sakamoto-CSU-Patient_db_location')]",
+          "name": "[parameters('dbserver_sakamoto-csu-patientdbserver_Sakamoto-CSU-Patient_db_name')]",
+          "type": "databases",
+          "apiVersion": "2014-04-01-preview",
+          "tags": {
+            "[concat('hidden-related:', concat('/providers/Microsoft.Web/sites/', parameters('appService_Sakamoto-CSU-Patient_name')))]": "DefaultConnection"
+          },
+          "dependsOn": [
+            "[concat('Microsoft.Sql/servers/', parameters('dbserver_sakamoto-csu-patientdbserver_name'))]"
+          ],
+          "properties": {
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "edition": "Standard",
+            "maxSizeBytes": "1073741824"
+          }
+        }
+      ]
+    },
+    {
+      "location": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_location')]",
+      "name": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_name')]",
+      "type": "Microsoft.Web/serverFarms",
+      "apiVersion": "2015-08-01",
+      "sku": {
+        "name": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_skuName')]",
+        "tier": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_skuTier')]",
+        "family": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_skuFamily')]",
+        "size": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_skuSize')]"
+      },
+      "properties": {
+        "name": "[parameters('appServicePlan_Sakamoto-CSU-Patient-hp_name')]"
+      }
+    }
+  ]
+}

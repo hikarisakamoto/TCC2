@@ -5,6 +5,7 @@
     <UserSecretsId>c6dc5fba-e2a9-4098-a9b1-122e497c9624</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <ApplicationInsightsResourceId>/subscriptions/8a665a8d-aca1-412b-aa13-7a22f3411bf2/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Sakamoto.TCC2.CSU.Patient.Web</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,6 +16,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.RabbitMQ" Version="3.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.0.0" />
     <PackageReference Include="AspnetCore.HealthChecks.UI.Client" Version="3.0.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.1" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -39,6 +41,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Infrastructure.IoC\Sakamoto.TCC2.CSU.Infrastructure.IoC.csproj" />
     <ProjectReference Include="..\Sakamoto.TCC2.CSU.Patient.Application\Sakamoto.TCC2.CSU.Patient.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>
