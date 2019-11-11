@@ -36,6 +36,12 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Application.Services
             _bus.SendCommand(medicalReport);
         }
 
+        public async Task<IEnumerable<MedicalRecordViewModel>> GetAll()
+        {
+            return _mapper.Map<IEnumerable<MedicalRecordViewModel>>(
+                _medicalRecordRepository.GetAll());
+        }
+
         public async Task<MedicalRecordViewModel> GetById(Guid id)
         {
             return _mapper.Map<MedicalRecordViewModel>(_medicalRecordRepository.GetById(id));

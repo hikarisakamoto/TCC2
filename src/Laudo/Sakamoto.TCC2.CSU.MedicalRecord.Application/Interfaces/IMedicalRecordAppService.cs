@@ -9,6 +9,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Application.Interfaces
     {
         void Add(AddNewMedicalRecordViewModel medicalRecordViewModel);
         void Add(AddNewMedicalRecordWithImageViewModel medicalRecordWithImageViewModel);
+        Task<IEnumerable<MedicalRecordViewModel>> GetAll();
         Task<MedicalRecordViewModel> GetById(Guid id);
         Task<IEnumerable<MedicalRecordViewModel>> GetByPatientId(Guid patientId);
         Task<IEnumerable<MedicalRecordViewModel>> GetByPractitionerId(Guid practitionerId);

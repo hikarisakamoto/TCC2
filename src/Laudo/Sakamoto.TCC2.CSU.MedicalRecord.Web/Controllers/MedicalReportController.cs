@@ -50,13 +50,21 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web.Controllers
         }
 
         [HttpGet]
+        [Route("medical-records")]
+        public async Task<IActionResult> GetAllMedicalRecord()
+        {
+            var medicalRecordViewModel = await _medicalRecordAppService.GetAll();
+            return Response(medicalRecordViewModel);
+        }
+
+        [HttpGet]
         [Route("medical-record/{id:guid}")]
         public async Task<IActionResult> GetMedicalRecordByIdTask(Guid? id)
         {
             if (id == null)
                 return NotFound();
 
-            var medicalRecordViewModel = _medicalRecordAppService.GetById(id.Value);
+            var medicalRecordViewModel = await _medicalRecordAppService.GetById(id.Value);
             return Response(medicalRecordViewModel);
         }
 
@@ -67,7 +75,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web.Controllers
             if (id == null)
                 return NotFound();
 
-            var medicalRecordViewModel = _medicalRecordAppService.GetByPatientId(id.Value);
+            var medicalRecordViewModel = await _medicalRecordAppService.GetByPatientId(id.Value);
             return Response(medicalRecordViewModel);
         }
 
@@ -78,7 +86,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web.Controllers
             if (id == null)
                 return NotFound();
 
-            var medicalRecordViewModel = _medicalRecordAppService.GetByPractitionerId(id.Value);
+            var medicalRecordViewModel = await _medicalRecordAppService.GetByPractitionerId(id.Value);
             return Response(medicalRecordViewModel);
         }
 
@@ -90,7 +98,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web.Controllers
                 return NotFound();
 
             var medicalRecordViewModel =
-                _medicalRecordAppService.GetByPractitionerIdAndPatientId(practitionerId.Value, patientId.Value);
+                await _medicalRecordAppService.GetByPractitionerIdAndPatientId(practitionerId.Value, patientId.Value);
             return Response(medicalRecordViewModel);
         }
 

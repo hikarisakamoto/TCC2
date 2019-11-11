@@ -32,6 +32,12 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Repositories
             _dbSet.InsertOneAsync(medicalReportData);
         }
 
+        public IEnumerable<Domain.Models.MedicalRecord> GetAll()
+        {
+            var medicalRecords = _dbSet.Find(mr => true).ToList();
+            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(medicalRecords);
+        }
+
         public Domain.Models.MedicalRecord GetById(Guid id)
         {
             var medicalRecord = _dbSet.Find(mr => mr.Id.Equals(id)).FirstOrDefault();

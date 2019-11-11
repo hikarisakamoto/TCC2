@@ -53,10 +53,10 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (!response.IsSuccessStatusCode) return BadRequest();
 
             var responseStream = await response.Content.ReadAsStringAsync();
-            var patientInformation =
+            var practitionerViewModels =
                 JsonConvert.DeserializeObject<List<PractitionerViewModel>>(responseStream);
 
-            return View(patientInformation);
+            return View(practitionerViewModels);
         }
 
         // GET: Practitioner/Register
