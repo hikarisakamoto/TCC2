@@ -2,9 +2,9 @@
 {
     public interface IMessageConfigurations
     {
-         string HostName { get; set; }
-         int Port { get; set; }
-         string UserName { get; set; }
-         string Password { get; set; }
+        string HostName { get; set; }
+        string Password { get; set; }
+        int Port { get; set; }
+        string UserName { get; set; }
     }
 }

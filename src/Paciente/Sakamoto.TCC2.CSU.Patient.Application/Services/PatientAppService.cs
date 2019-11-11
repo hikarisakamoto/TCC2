@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
@@ -26,6 +27,11 @@ namespace Sakamoto.TCC2.CSU.Patient.Application.Services
         {
             var registerCommand = _mapper.Map<DeactivatePatientCommand>(patientViewModel);
             _bus.SendCommand(registerCommand);
+        }
+
+        public async Task<IEnumerable<PatientBasicInformationViewModel>> GetAllPatients()
+        {
+            return _mapper.Map<IEnumerable<PatientBasicInformationViewModel>>(_patientRepository.GetAllPatients());
         }
 
         public async Task<PatientBasicInformationViewModel> GetBasicInformationByCpf(string cpf)

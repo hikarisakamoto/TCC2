@@ -9,7 +9,6 @@ using Sakamoto.TCC2.CSU.Patient.Application.ViewModels;
 
 namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
 {
-    //[Route("api/[controller]")]
     [ApiController]
     public class PatientController : BaseController
     {
@@ -37,39 +36,59 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
             return Response(patientViewModel);
         }
 
+        [HttpGet]
+        [Route("patients")]
+        public async Task<IActionResult> GetAllPatients()
+        {
+            var patients = await _patientAppService.GetAllPatients();
+
+            return Response(patients);
+        }
 
         [HttpGet]
         [Route("patient-basic-information/{cpf:maxlength(11)}")]
-        public async Task<IActionResult> GetBasicPatientInformationByCpf([FromBody] string cpf)
+        public async Task<IActionResult> GetBasicPatientInformationByCpf(string cpf)
         {
-            var patientViewModel = _patientAppService.GetBasicInformationByCpf(cpf);
+            if (string.IsNullOrWhiteSpace(cpf))
+                return NotFound();
+
+            var patientViewModel = await _patientAppService.GetBasicInformationByCpf(cpf);
 
             return Response(patientViewModel);
         }
 
         [HttpGet]
         [Route("patient-basic-information/{id:guid}")]
-        public async Task<IActionResult> GetBasicPatientInformationById([FromBody] Guid id)
+        public async Task<IActionResult> GetBasicPatientInformationById(Guid? id)
         {
-            var patientViewModel = _patientAppService.GetBasicInformationById(id);
+            if (id == null)
+                return NotFound();
+
+            var patientViewModel = await _patientAppService.GetBasicInformationById(id.Value);
 
             return Response(patientViewModel);
         }
 
         [HttpGet]
         [Route("patient-information/{cpf:maxlength(11)}")]
-        public async Task<IActionResult> GetPatientByCpf([FromBody] string cpf)
+        public async Task<IActionResult> GetPatientByCpf(string cpf)
         {
-            var patientViewModel = _patientAppService.GetByCpf(cpf);
+            if (string.IsNullOrWhiteSpace(cpf))
+                return NotFound();
+
+            var patientViewModel = await _patientAppService.GetByCpf(cpf);
 
             return Response(patientViewModel);
         }
 
         [HttpGet]
         [Route("patient-information/{id:guid}")]
-        public async Task<IActionResult> GetPatientById([FromBody] Guid id)
+        public async Task<IActionResult> GetPatientById(Guid? id)
         {
-            var patientViewModel = _patientAppService.GetById(id);
+            if (id == null)
+                return NotFound();
+
+            var patientViewModel = await _patientAppService.GetById(id.Value);
 
             return Response(patientViewModel);
         }
@@ -91,7 +110,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
         }
 
 
-        [HttpPut]
+        [HttpPost]
         [Route("patient-management-update-address")]
         public async Task<IActionResult> UpdatePatientAddress([FromBody] UpdatePatientAddressViewModel patientViewModel)
         {
@@ -106,7 +125,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
             return Response(patientViewModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("patient-management-update-email")]
         public async Task<IActionResult> UpdatePatientEmail([FromBody] UpdatePatientEmailViewModel patientViewModel)
         {
@@ -121,7 +140,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
             return Response(patientViewModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("patient-management-update-heartrate")]
         public async Task<IActionResult> UpdatePatientHeartRate(
             [FromBody] UpdatePatientHeartRateViewModel patientViewModel)
@@ -137,7 +156,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
             return Response(patientViewModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("patient-management-update-phone")]
         public async Task<IActionResult> UpdatePatientPhone([FromBody] UpdatePatientPhoneViewModel patientViewModel)
         {
@@ -152,7 +171,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
             return Response(patientViewModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("patient-management-update-photo")]
         public async Task<IActionResult> UpdatePatientPhoto([FromBody] UpdatePatientPhotoViewModel patientViewModel)
         {

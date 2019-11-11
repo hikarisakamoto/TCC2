@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sakamoto.TCC2.CSU.Patient.Application.ViewModels;
 
@@ -7,6 +8,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Application.Interfaces
     public interface IPatientAppService
     {
         void Deactivate(DeactivatePatientViewModel patientViewModel);
+        Task<IEnumerable<PatientBasicInformationViewModel>> GetAllPatients();
         Task<PatientBasicInformationViewModel> GetBasicInformationByCpf(string cpf);
         Task<PatientBasicInformationViewModel> GetBasicInformationById(Guid id);
         Task<PatientViewModel> GetByCpf(string cpf);

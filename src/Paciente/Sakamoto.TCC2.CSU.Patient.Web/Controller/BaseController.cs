@@ -42,11 +42,7 @@ namespace Sakamoto.TCC2.CSU.Patient.Web.Controller
         protected IActionResult Response(object result = null)
         {
             if (InvalidOperation())
-                return Ok(new
-                {
-                    success = true,
-                    data = result
-                });
+                return Ok(result);
 
             return BadRequest(new
             {

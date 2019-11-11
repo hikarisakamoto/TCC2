@@ -1,0 +1,115 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appService_Sakamoto-CSU-EventStore_name": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_location": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_name": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_resourceGroup": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-EventStore_location": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-EventStore_type": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-EventStore_hockeyAppToken": {
+      "type": "string"
+    },
+    "appInsightsComponentName_Sakamoto-CSU-EventStore_requestSource": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuName": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuTier": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuFamily": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuSize": {
+      "type": "string"
+    },
+    "appServicePlan_Sakamoto-CSU-EventStorePlan-hp_workerSizeId": {
+      "type": "int"
+    }
+  },
+  "resources": [
+    {
+      "location": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_location')]",
+      "name": "[parameters('appService_Sakamoto-CSU-EventStore_name')]",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "tags": {
+        "[concat('hidden-related:', resourceId(parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_name')))]": "empty"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverFarms', parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_name'))]"
+      ],
+      "kind": "app",
+      "properties": {
+        "name": "[parameters('appService_Sakamoto-CSU-EventStore_name')]",
+        "kind": "app",
+        "httpsOnly": true,
+        "serverFarmId": "[resourceId(parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_name'))]"
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', parameters('appService_Sakamoto-CSU-EventStore_name'))]",
+            "[concat('microsoft.insights/components/', parameters('appService_Sakamoto-CSU-EventStore_name'))]"
+          ],
+          "properties": {
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appService_Sakamoto-CSU-EventStore_name'))).InstrumentationKey]",
+            "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0",
+            "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
+            "DiagnosticServices_EXTENSION_VERSION": "~3"
+          }
+        }
+      ]
+    },
+    {
+      "location": "[parameters('appInsightsComponentName_Sakamoto-CSU-EventStore_location')]",
+      "name": "[parameters('appService_Sakamoto-CSU-EventStore_name')]",
+      "type": "microsoft.insights/components",
+      "apiVersion": "2014-08-01",
+      "tags": {
+        "[concat('hidden-link:', concat('/providers/Microsoft.Web/sites/', parameters('appService_Sakamoto-CSU-EventStore_name')))]": "Resource"
+      },
+      "properties": {
+        "ApplicationId": "[parameters('appService_Sakamoto-CSU-EventStore_name')]",
+        "Application_Type": "[parameters('appInsightsComponentName_Sakamoto-CSU-EventStore_type')]",
+        "HockeyAppToken": "[parameters('appInsightsComponentName_Sakamoto-CSU-EventStore_hockeyAppToken')]",
+        "HockeyAppId": "[parameters('appInsightsComponentName_Sakamoto-CSU-EventStore_hockeyAppToken')]",
+        "Flow_Type": "Redfield",
+        "Request_Source": "[parameters('appInsightsComponentName_Sakamoto-CSU-EventStore_requestSource')]"
+      }
+    },
+    {
+      "location": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_location')]",
+      "name": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_name')]",
+      "type": "Microsoft.Web/serverFarms",
+      "apiVersion": "2015-08-01",
+      "sku": {
+        "name": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuName')]",
+        "tier": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuTier')]",
+        "family": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuFamily')]",
+        "size": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_skuSize')]"
+      },
+      "properties": {
+        "name": "[parameters('appServicePlan_Sakamoto-CSU-EventStorePlan-hp_name')]"
+      }
+    }
+  ]
+}

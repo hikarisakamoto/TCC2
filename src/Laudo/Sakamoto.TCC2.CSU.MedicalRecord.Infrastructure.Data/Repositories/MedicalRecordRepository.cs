@@ -34,35 +34,41 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Infrastructure.Data.Repositories
 
         public Domain.Models.MedicalRecord GetById(Guid id)
         {
-            return _mapper.Map<Domain.Models.MedicalRecord>(_dbSet.Find(mr => mr.Id.Equals(id)).FirstOrDefault()
-            );
+            var medicalRecord = _dbSet.Find(mr => mr.Id.Equals(id)).FirstOrDefault();
+
+            return _mapper.Map<Domain.Models.MedicalRecord>(medicalRecord);
         }
 
         public IEnumerable<Domain.Models.MedicalRecord> GetByPatientId(Guid patientId)
         {
-            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(
-                _dbSet.Find(mr => mr.PatientId.Equals(patientId)));
+            var medicalRecords = _dbSet.Find(mr => mr.PatientId.Equals(patientId)).ToList();
+
+            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(medicalRecords);
         }
 
         public IEnumerable<Domain.Models.MedicalRecord> GetByPractitionerId(Guid practitionerId)
         {
-            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(_dbSet.Find(mr =>
-                mr.PractitionerId.Equals(practitionerId)));
+            var medicalRecord = _dbSet.Find(mr => mr.PractitionerId.Equals(practitionerId)).ToList();
+
+            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(medicalRecord);
         }
 
         public IEnumerable<Domain.Models.MedicalRecord> GetByPractitionerIdAndPatientId(Guid practitionerId,
             Guid patientId)
         {
-            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(_dbSet.FindAsync(mr =>
-                mr.PatientId.Equals(patientId) && mr.PractitionerId.Equals(practitionerId)));
+            var medicalRecords = _dbSet
+                .Find(mr => mr.PatientId.Equals(patientId) && mr.PractitionerId.Equals(practitionerId)).ToList();
+            return _mapper.Map<IEnumerable<Domain.Models.MedicalRecord>>(medicalRecords);
         }
 
         public Domain.Models.MedicalRecord GetByRemovalParamaters(Guid medicalReportId, Guid patientId,
             Guid practitionerId)
         {
-            return _mapper.Map<Domain.Models.MedicalRecord>(_dbSet.Find(mr =>
+            var medicalRecord = _dbSet.Find(mr =>
                 mr.PatientId.Equals(patientId) && mr.PractitionerId.Equals(practitionerId) &&
-                mr.Id.Equals(medicalReportId)).FirstOrDefault());
+                mr.Id.Equals(medicalReportId)).FirstOrDefault();
+
+            return _mapper.Map<Domain.Models.MedicalRecord>(medicalRecord);
         }
 
         public void Remove(Guid id)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Sakamoto.TCC2.CSU.Patients.Domain.Interfaces;
@@ -13,9 +14,15 @@ namespace Sakamoto.TCC2.CSU.Patients.Infrastructure.Data.Repositories
         {
         }
 
+        public IEnumerable<Patient> GetAllPatients()
+        {
+            const string sql = "SELECT * FROM PATIENTS";
+            return Context.Database.GetDbConnection().Query<Patient>(sql);
+        }
+
         public Patient GetByCpf(string patientCpf)
         {
-            const string sql = "SELECT * FROM PATIENTS P WHERE P.CPF LIKE '%@patientCpf%'";
+            const string sql = "SELECT * FROM PATIENTS P WHERE P.CPF LIKE @patientCpf";
             return Context.Database.GetDbConnection().QueryFirstOrDefault<Patient>(sql, new {patientCpf});
         }
 

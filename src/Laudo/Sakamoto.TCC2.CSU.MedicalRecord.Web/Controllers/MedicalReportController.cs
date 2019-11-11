@@ -51,42 +51,53 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web.Controllers
 
         [HttpGet]
         [Route("medical-record/{id:guid}")]
-        public async Task<IActionResult> GetMedicalRecordByIdTask([FromBody] Guid id)
+        public async Task<IActionResult> GetMedicalRecordByIdTask(Guid? id)
         {
-            var medicalRecordViewModel = _medicalRecordAppService.GetById(id);
+            if (id == null)
+                return NotFound();
+
+            var medicalRecordViewModel = _medicalRecordAppService.GetById(id.Value);
             return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
         [Route("medical-record/patient/{id:guid}")]
-        public async Task<IActionResult> GetMedicalRecordByPatientId([FromBody] Guid id)
+        public async Task<IActionResult> GetMedicalRecordByPatientId(Guid? id)
         {
-            var medicalRecordViewModel = _medicalRecordAppService.GetByPatientId(id);
+            if (id == null)
+                return NotFound();
+
+            var medicalRecordViewModel = _medicalRecordAppService.GetByPatientId(id.Value);
             return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
         [Route("medical-record/practitioner/{id:guid}")]
-        public async Task<IActionResult> GetMedicalRecordByPractitionerId([FromBody] Guid id)
+        public async Task<IActionResult> GetMedicalRecordByPractitionerId(Guid? id)
         {
-            var medicalRecordViewModel = _medicalRecordAppService.GetByPractitionerId(id);
+            if (id == null)
+                return NotFound();
+
+            var medicalRecordViewModel = _medicalRecordAppService.GetByPractitionerId(id.Value);
             return Response(medicalRecordViewModel);
         }
 
         [HttpGet]
         [Route("medical-record/practitioner/{practitionerId:guid}/patient/{patientId:guid}")]
-        public async Task<IActionResult> GetMedicalRecordByPractitionerId([FromBody] Guid practitionerId,
-            [FromBody] Guid patientId)
+        public async Task<IActionResult> GetMedicalRecordByPractitionerId(Guid? practitionerId, Guid? patientId)
         {
+            if (practitionerId == null || patientId == null)
+                return NotFound();
+
             var medicalRecordViewModel =
-                _medicalRecordAppService.GetByPractitionerIdAndPatientId(practitionerId, patientId);
+                _medicalRecordAppService.GetByPractitionerIdAndPatientId(practitionerId.Value, patientId.Value);
             return Response(medicalRecordViewModel);
         }
 
         [HttpDelete]
         [Route("medical-record-management-remove")]
         public async Task<IActionResult> RemoveExistingMedicalRecordById(
-            [FromBody] RemoveExistingMedicalRecordByIdViewModel medicalRecordViewModel)
+            RemoveExistingMedicalRecordByIdViewModel medicalRecordViewModel)
         {
             if (!ModelState.IsValid)
             {

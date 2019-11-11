@@ -37,17 +37,23 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
 
         [HttpGet]
         [Route("practitioner-information/{crm:maxlength(30)}")]
-        public async Task<IActionResult> GetPractitionerInformationByCrm([FromBody] string crm)
+        public async Task<IActionResult> GetPractitionerInformationByCrm(string crm)
         {
+            if (string.IsNullOrWhiteSpace(crm))
+                return NotFound();
+
             var practitionerViewModel = _practitionerAppService.GetByCrm(crm);
             return Response(practitionerViewModel);
         }
 
         [HttpGet]
         [Route("practitioner-information/{id:guid}")]
-        public async Task<IActionResult> GetPractitionerInformationById([FromBody] Guid id)
+        public async Task<IActionResult> GetPractitionerInformationById(Guid? id)
         {
-            var practitionerViewModel = _practitionerAppService.GetById(id);
+            if (id == null)
+                return NotFound();
+
+            var practitionerViewModel = _practitionerAppService.GetById(id.Value);
             return Response(practitionerViewModel);
         }
 

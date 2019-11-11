@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Web", "1 - Web", "{51F76D63-3D36-4CBD-A6CE-3D732F14072F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Web", "src\WEB\Sakamoto.TCC2.CSU.Web\Sakamoto.TCC2.CSU.Web.csproj", "{9495FC6B-FB89-4647-9FF7-E322BB79E1D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sakamoto.TCC2.CSU.Web", "src\WEB\Sakamoto.TCC2.CSU.Web\Sakamoto.TCC2.CSU.Web.csproj", "{14410839-6F8E-4917-BDB1-C87432DF5FC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9495FC6B-FB89-4647-9FF7-E322BB79E1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9495FC6B-FB89-4647-9FF7-E322BB79E1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9495FC6B-FB89-4647-9FF7-E322BB79E1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9495FC6B-FB89-4647-9FF7-E322BB79E1D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14410839-6F8E-4917-BDB1-C87432DF5FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14410839-6F8E-4917-BDB1-C87432DF5FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14410839-6F8E-4917-BDB1-C87432DF5FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14410839-6F8E-4917-BDB1-C87432DF5FC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9495FC6B-FB89-4647-9FF7-E322BB79E1D9} = {51F76D63-3D36-4CBD-A6CE-3D732F14072F}
+		{14410839-6F8E-4917-BDB1-C87432DF5FC5} = {51F76D63-3D36-4CBD-A6CE-3D732F14072F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1CDAD0B-3B74-49ED-B13C-D48D327B8324}

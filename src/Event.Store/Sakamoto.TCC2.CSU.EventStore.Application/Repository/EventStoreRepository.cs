@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoMapper;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Sakamoto.TCC2.CSU.EventStore.Application.Configurations;

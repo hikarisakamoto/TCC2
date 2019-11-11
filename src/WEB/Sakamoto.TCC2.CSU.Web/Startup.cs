@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Sakamoto.TCC2.CSU.Web.Data;
 using Sakamoto.TCC2.CSU.Web.Models;
 
 namespace Sakamoto.TCC2.CSU.Web
@@ -24,23 +25,18 @@ namespace Sakamoto.TCC2.CSU.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
             services.AddControllersWithViews();
 
-            services.AddDbContext<SakamotoTCC2CSUWebContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SakamotoTCC2CSUWebContext")));
+            services.AddDbContext<CSUContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CSUContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            app.UseDeveloperExceptionPage();
+
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -10,7 +10,7 @@ namespace Sakamoto.TCC2.CSU.Infrastructure.CrossCutting.Bus
     {
         private readonly IMediator _mediator;
 
-        public InMemoryBus(IMediator mediator  )
+        public InMemoryBus(IMediator mediator)
         {
             _mediator = mediator;
         }

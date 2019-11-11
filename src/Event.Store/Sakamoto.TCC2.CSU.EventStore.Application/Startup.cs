@@ -1,4 +1,3 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,7 +12,6 @@ using Sakamoto.TCC2.CSU.EventStore.Application.Configurations;
 using Sakamoto.TCC2.CSU.EventStore.Application.Interfaces;
 using Sakamoto.TCC2.CSU.EventStore.Application.Repository;
 using Sakamoto.TCC2.CSU.EventStore.Application.Services;
-using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
 namespace Sakamoto.TCC2.CSU.EventStore.Application
 {
@@ -37,11 +35,7 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-            else
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+            app.UseDeveloperExceptionPage();
 
             app.UseCors(c =>
             {

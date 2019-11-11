@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sakamoto.TCC2.CSU.Web.Models.Patients
 {
-    public class AddressViewModel
+    public class UpdatePatientAddressViewModel
     {
-        [Key] public Guid Id { get; set; }
-
         [Required(ErrorMessage = "City name is required")]
         [MinLength(2)]
         [MaxLength(100)]
@@ -17,6 +15,8 @@ namespace Sakamoto.TCC2.CSU.Web.Models.Patients
         [MinLength(2)]
         [MaxLength(255)]
         public string District { get; set; }
+
+        [Key] public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Number is required")]
         [MinLength(2)]
