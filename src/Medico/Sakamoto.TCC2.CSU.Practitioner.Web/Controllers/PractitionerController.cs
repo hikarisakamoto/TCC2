@@ -36,13 +36,21 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
         }
 
         [HttpGet]
+        [Route("practitioners")]
+        public async Task<IActionResult> GetAllPractitioners()
+        {
+            var practitionerViewModel = await _practitionerAppService.GetAllPractitioners();
+            return Response(practitionerViewModel);
+        }
+
+        [HttpGet]
         [Route("practitioner-information/{crm:maxlength(30)}")]
         public async Task<IActionResult> GetPractitionerInformationByCrm(string crm)
         {
             if (string.IsNullOrWhiteSpace(crm))
                 return NotFound();
 
-            var practitionerViewModel = _practitionerAppService.GetByCrm(crm);
+            var practitionerViewModel =await  _practitionerAppService.GetByCrm(crm);
             return Response(practitionerViewModel);
         }
 
@@ -53,7 +61,7 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
             if (id == null)
                 return NotFound();
 
-            var practitionerViewModel = _practitionerAppService.GetById(id.Value);
+            var practitionerViewModel =await _practitionerAppService.GetById(id.Value);
             return Response(practitionerViewModel);
         }
 
@@ -72,7 +80,7 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
             return Response(practitionerViewModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("practitioner-management-update-email")]
         public async Task<IActionResult> UpdatePractitionerEmail(
             [FromBody] UpdatePractitionerEmailViewModel practitionerViewModel)
@@ -87,7 +95,7 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Web.Controllers
             return Response(practitionerViewModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("practitioner-management-update-phone")]
         public async Task<IActionResult> UpdatePractitionerPhone(
             [FromBody] UpdatePractitionerPhoneViewModel practitionerViewModel)

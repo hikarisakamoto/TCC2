@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Sakamoto.TCC2.CSU.Web.Data;
 using Sakamoto.TCC2.CSU.Web.Models.Patients;
 
 namespace Sakamoto.TCC2.CSU.Web.Controllers
@@ -13,15 +12,12 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
     public class PatientController : Controller
     {
         private readonly IHttpClientFactory _clientFactory;
-        private readonly CSUContext _context;
 
-        public PatientController(CSUContext context, IHttpClientFactory clientFactory)
+        public PatientController(IHttpClientFactory clientFactory)
         {
-            _context = context;
             _clientFactory = clientFactory;
         }
 
-        // TODO
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null) return NotFound();

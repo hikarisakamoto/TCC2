@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sakamoto.TCC2.CSU.Practitioner.Application.ViewModels;
 
@@ -12,5 +13,6 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Application.Interfaces
         void Register(RegisterNewPractitionerViewModel practitionerViewModel);
         void UpdateEmail(UpdatePractitionerEmailViewModel practitionerViewModel);
         void UpdatePhone(UpdatePractitionerPhoneViewModel practitionerViewModel);
+        Task<IEnumerable<PractitionerViewModel>> GetAllPractitioners();
     }
 }

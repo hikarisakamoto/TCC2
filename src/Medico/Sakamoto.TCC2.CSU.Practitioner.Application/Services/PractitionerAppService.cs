@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Sakamoto.TCC2.CSU.Domain.Core.Bus;
@@ -55,6 +56,12 @@ namespace Sakamoto.TCC2.CSU.Practitioner.Application.Services
         {
             var practitioner = _mapper.Map<UpdatePractitionerPhoneCommand>(practitionerViewModel);
             _bus.SendCommand(practitioner);
+        }
+
+        public async Task<IEnumerable<PractitionerViewModel>> GetAllPractitioners()
+        {
+            return _mapper.Map<IEnumerable<PractitionerViewModel>>(_practitionerRepository.GetAllPractitioners());
+
         }
     }
 }

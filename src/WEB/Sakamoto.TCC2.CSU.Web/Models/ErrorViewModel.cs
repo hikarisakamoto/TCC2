@@ -1,5 +1,3 @@
-using System;
-
 namespace Sakamoto.TCC2.CSU.Web.Models
 {
     public class ErrorViewModel

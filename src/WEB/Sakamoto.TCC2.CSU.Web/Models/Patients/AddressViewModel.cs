@@ -6,8 +6,6 @@ namespace Sakamoto.TCC2.CSU.Web.Models.Patients
 {
     public class AddressViewModel
     {
-        [Key] public Guid Id { get; set; }
-
         [Required(ErrorMessage = "City name is required")]
         [MinLength(2)]
         [MaxLength(100)]
