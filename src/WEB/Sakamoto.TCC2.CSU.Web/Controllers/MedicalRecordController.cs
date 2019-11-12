@@ -44,40 +44,6 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             return View();
         }
 
-        private async Task<List<PatientBasicInformationViewModel>> GetPatients()
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-patient.azurewebsites.net/patients");
-
-            var client = _clientFactory.CreateClient();
-
-            var response = await client.SendAsync(request);
-
-            if (!response.IsSuccessStatusCode) return new List<PatientBasicInformationViewModel>();
-
-            var responseStream = await response.Content.ReadAsStringAsync();
-            var patientInformation =
-                JsonConvert.DeserializeObject<List<PatientBasicInformationViewModel>>(responseStream);
-            return patientInformation;
-        }
-
-        private async Task<List<PractitionerViewModel>> GetPractitioners()
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-practitioner.azurewebsites.net/practitioners");
-
-            var client = _clientFactory.CreateClient();
-
-            var response = await client.SendAsync(request);
-
-            if (!response.IsSuccessStatusCode) return new List<PractitionerViewModel>();
-
-            var responseStream = await response.Content.ReadAsStringAsync();
-            var practitionerViewModels =
-                JsonConvert.DeserializeObject<List<PractitionerViewModel>>(responseStream);
-            return practitionerViewModels;
-        }
-
         // POST: MedicalRecord/AddMedicalRecord
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -117,6 +83,40 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
 
             if (medicalRecord == null) return NotFound();
             return View(medicalRecord);
+        }
+
+        private async Task<List<PatientBasicInformationViewModel>> GetPatients()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get,
+                "https://sakamoto-csu-patient.azurewebsites.net/patients");
+
+            var client = _clientFactory.CreateClient();
+
+            var response = await client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode) return new List<PatientBasicInformationViewModel>();
+
+            var responseStream = await response.Content.ReadAsStringAsync();
+            var patientInformation =
+                JsonConvert.DeserializeObject<List<PatientBasicInformationViewModel>>(responseStream);
+            return patientInformation;
+        }
+
+        private async Task<List<PractitionerViewModel>> GetPractitioners()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get,
+                "https://sakamoto-csu-practitioner.azurewebsites.net/practitioners");
+
+            var client = _clientFactory.CreateClient();
+
+            var response = await client.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode) return new List<PractitionerViewModel>();
+
+            var responseStream = await response.Content.ReadAsStringAsync();
+            var practitionerViewModels =
+                JsonConvert.DeserializeObject<List<PractitionerViewModel>>(responseStream);
+            return practitionerViewModels;
         }
 
         // GET: MedicalRecord

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sakamoto.TCC2.CSU.Web.Models.EventStore;
+using Sakamoto.TCC2.CSU.Web.Models.MedicalRecord;
 using Sakamoto.TCC2.CSU.Web.Models.Patients;
 using Sakamoto.TCC2.CSU.Web.Models.Practitioners;
-using Sakamoto.TCC2.CSU.Web.Models.MedicalRecord;
 
 namespace Sakamoto.TCC2.CSU.Web.Data
 {
@@ -14,10 +15,12 @@ namespace Sakamoto.TCC2.CSU.Web.Data
 
         public DbSet<AddressViewModel> AddressViewModel { get; set; }
 
+        public DbSet<MedicalRecordViewModel> MedicalRecordViewModel { get; set; }
+
         public DbSet<PatientViewModel> PatientViewModel { get; set; }
 
         public DbSet<PractitionerViewModel> PractitionerViewModel { get; set; }
 
-        public DbSet<Sakamoto.TCC2.CSU.Web.Models.MedicalRecord.MedicalRecordViewModel> MedicalRecordViewModel { get; set; }
+        public DbSet<StoredEventViewModel> StoredEventViewModel { get; set; }
     }
 }

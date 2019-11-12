@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Sakamoto.TCC2.CSU.Web.Models.EventStore.StoredEventViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div>
+    <h4>Stored Event</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AggregateId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MessageType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AggregateId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MessageType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

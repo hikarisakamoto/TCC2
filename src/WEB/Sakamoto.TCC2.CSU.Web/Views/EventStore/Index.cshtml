@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Guid>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Aggregate Id
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@item">Details</a> |
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

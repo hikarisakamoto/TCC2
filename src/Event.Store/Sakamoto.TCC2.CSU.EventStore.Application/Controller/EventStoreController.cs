@@ -24,7 +24,18 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application.Controller
             if (aggregateId == null)
                 return NotFound();
 
-            var events = _eventStoreRepository.All(aggregateId.Value);
+            var events = _eventStoreRepository.EventsByAggregate(aggregateId.Value);
+            if (events.Any())
+                return Ok(events);
+            return NotFound(events);
+        }
+
+        // GET
+        [HttpGet]
+        [Route("stored-events")]
+        public async Task<IActionResult> GetStoredEvents()
+        {
+            var events = _eventStoreRepository.All();
             if (events.Any())
                 return Ok(events);
             return NotFound(events);

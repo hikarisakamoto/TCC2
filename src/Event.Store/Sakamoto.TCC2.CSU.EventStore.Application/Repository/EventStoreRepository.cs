@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Sakamoto.TCC2.CSU.EventStore.Application.Configurations;
@@ -25,7 +26,12 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application.Repository
             GC.SuppressFinalize(this);
         }
 
-        public IList<StoredEvents> All(Guid aggregateId)
+        public IEnumerable<Guid> All()
+        {
+            return _dbSet.Find(s => true).ToList().Select(e => e.AggregateId).Distinct();
+        }
+
+        public IList<StoredEvents> EventsByAggregate(Guid aggregateId)
         {
             return _dbSet.Find(mr => mr.Id.Equals(aggregateId)).ToList();
         }

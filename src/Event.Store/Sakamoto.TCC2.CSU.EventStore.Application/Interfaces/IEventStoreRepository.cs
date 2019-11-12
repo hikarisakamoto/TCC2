@@ -6,7 +6,8 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application.Interfaces
 {
     public interface IEventStoreRepository
     {
-        IList<StoredEvents> All(Guid aggregateId);
+        IEnumerable<Guid> All();
+        IList<StoredEvents> EventsByAggregate(Guid aggregateId);
         void Save(StoredEvents theEvent);
     }
 }
