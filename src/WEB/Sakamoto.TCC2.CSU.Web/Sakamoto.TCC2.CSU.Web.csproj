@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <ApplicationIcon>patient_tux_penguin_20841.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
