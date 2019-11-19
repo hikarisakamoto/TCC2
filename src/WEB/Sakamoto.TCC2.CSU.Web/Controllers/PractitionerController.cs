@@ -25,7 +25,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-practitioner.azurewebsites.net/practitioner-information/{id}");
+                $"https://csu-practitioner.azurewebsites.net/practitioner-information/{id}");
 
             var client = _clientFactory.CreateClient();
 
@@ -44,7 +44,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-practitioner.azurewebsites.net/practitioners");
+                "https://csu-practitioner.azurewebsites.net/practitioners");
 
             var client = _clientFactory.CreateClient();
 
@@ -76,7 +76,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
 
             var client = _clientFactory.CreateClient();
             var response = await client.PostAsync(
-                "https://sakamoto-csu-practitioner.azurewebsites.net/practitioner-register",
+                "https://csu-practitioner.azurewebsites.net/practitioner-register",
                 new StringContent(JsonConvert.SerializeObject(practitionerViewModel), Encoding.UTF8,
                     "application/json"));
 
@@ -91,7 +91,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-practitioner.azurewebsites.net/practitioner-information/{id}");
+                $"https://csu-practitioner.azurewebsites.net/practitioner-information/{id}");
 
             var client = _clientFactory.CreateClient();
 
@@ -128,7 +128,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             var client = _clientFactory.CreateClient();
             var response =
                 await client.PostAsync(
-                    "https://sakamoto-csu-practitioner.azurewebsites.net/practitioner-management-update-email",
+                    "https://csu-practitioner.azurewebsites.net/practitioner-management-update-email",
                     new StringContent(JsonConvert.SerializeObject(practitionerViewModel), Encoding.UTF8,
                         "application/json"));
 

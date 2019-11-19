@@ -42,7 +42,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-eventstore.azurewebsites.net/stored-events");
+                "https://csu-eventstore.azurewebsites.net/stored-events");
 
             var client = _clientFactory.CreateClient();
 

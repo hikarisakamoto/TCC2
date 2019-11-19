@@ -23,7 +23,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-patient.azurewebsites.net/patient-basic-information/{id}");
+                $"https://csu-patient.azurewebsites.net/patient-basic-information/{id}");
 
             var client = _clientFactory.CreateClient();
 
@@ -44,7 +44,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-patient.azurewebsites.net/patient-information/{id}");
+                $"https://csu-patient.azurewebsites.net/patient-information/{id}");
 
             var client = _clientFactory.CreateClient();
 
@@ -80,7 +80,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             var client = _clientFactory.CreateClient();
             var response =
                 await client.PostAsync(
-                    "https://sakamoto-csu-patient.azurewebsites.net//patient-management-update-heartrate",
+                    "https://csu-patient.azurewebsites.net//patient-management-update-heartrate",
                     new StringContent(JsonConvert.SerializeObject(patientViewModel), Encoding.UTF8,
                         "application/json"));
 
@@ -94,7 +94,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-patient.azurewebsites.net/patients");
+                "https://csu-patient.azurewebsites.net/patients");
 
             var client = _clientFactory.CreateClient();
 
@@ -125,7 +125,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (!ModelState.IsValid) return View(patientViewModel);
 
             var client = _clientFactory.CreateClient();
-            var response = await client.PostAsync("https://sakamoto-csu-patient.azurewebsites.net/patient-register",
+            var response = await client.PostAsync("https://csu-patient.azurewebsites.net/patient-register",
                 new StringContent(JsonConvert.SerializeObject(patientViewModel), Encoding.UTF8, "application/json"));
 
 
@@ -139,7 +139,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-patient.azurewebsites.net/patient-information/{id}");
+                $"https://csu-patient.azurewebsites.net/patient-information/{id}");
 
             var client = _clientFactory.CreateClient();
 
@@ -181,7 +181,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             var client = _clientFactory.CreateClient();
             var response =
                 await client.PostAsync(
-                    "https://sakamoto-csu-patient.azurewebsites.net/patient-management-update-address",
+                    "https://csu-patient.azurewebsites.net/patient-management-update-address",
                     new StringContent(JsonConvert.SerializeObject(patientViewModel), Encoding.UTF8,
                         "application/json"));
 

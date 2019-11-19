@@ -55,7 +55,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
 
             var client = _clientFactory.CreateClient();
             var response = await client.PostAsync(
-                "https://sakamoto-csu-medicalrecord.azurewebsites.net/medical-record-simple",
+                "https://csu-medicalrecord.azurewebsites.net/medical-record-simple",
                 new StringContent(JsonConvert.SerializeObject(medicalRecordViewModel), Encoding.UTF8,
                     "application/json"));
 
@@ -70,7 +70,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-medicalrecord.azurewebsites.net/medical-record/{id}");
+                $"https://csu-medicalrecord.azurewebsites.net/medical-record/{id}");
 
             var client = _clientFactory.CreateClient();
 
@@ -88,7 +88,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
         private async Task<List<PatientBasicInformationViewModel>> GetPatients()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-patient.azurewebsites.net/patients");
+                "https://csu-patient.azurewebsites.net/patients");
 
             var client = _clientFactory.CreateClient();
 
@@ -123,7 +123,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-medicalrecord.azurewebsites.net/medical-records");
+                "https://csu-medicalrecord.azurewebsites.net/medical-records");
 
             var client = _clientFactory.CreateClient();
 
