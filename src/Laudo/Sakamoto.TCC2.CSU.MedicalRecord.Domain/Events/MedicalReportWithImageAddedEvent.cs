@@ -7,7 +7,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Events
         public MedicalReportWithImageAddedEvent(Models.MedicalRecord medicalRecord)
         {
             MedicalRecord = medicalRecord;
-            AggregateId = medicalRecord.Id;
+            AggregateId = medicalRecord.PatientId;
         }
 
         public Models.MedicalRecord MedicalRecord { get; }

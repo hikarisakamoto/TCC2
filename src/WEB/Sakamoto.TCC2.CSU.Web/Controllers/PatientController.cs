@@ -23,7 +23,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://csu-patient.azurewebsites.net/patient-basic-information/{id}");
+                $"https://csu-patient.azurewebsites.net/patient-information/{id}");
 
             var client = _clientFactory.CreateClient();
 

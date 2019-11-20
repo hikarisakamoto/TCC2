@@ -23,7 +23,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
             if (id == null) return NotFound();
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"https://sakamoto-csu-eventstore.azurewebsites.net​/stored-event​/{id}");
+                $"https://csu-eventstore.azurewebsites.net/stored-event/{id}");
 
             var client = _clientFactory.CreateClient();
 

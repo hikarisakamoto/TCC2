@@ -28,12 +28,13 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application.Repository
 
         public IEnumerable<Guid> All()
         {
-            return _dbSet.Find(s => true).ToList().Select(e => e.AggregateId).Distinct();
+            var storedEvents = _dbSet.Find(s => true).ToList();
+            return storedEvents.Select(e => e.AggregateId).Distinct().ToList();
         }
 
         public IList<StoredEvents> EventsByAggregate(Guid aggregateId)
         {
-            return _dbSet.Find(mr => mr.Id.Equals(aggregateId)).ToList();
+            return _dbSet.Find(mr => mr.AggregateId.Equals(aggregateId)).ToList();
         }
 
         public void Save(StoredEvents theEvent)

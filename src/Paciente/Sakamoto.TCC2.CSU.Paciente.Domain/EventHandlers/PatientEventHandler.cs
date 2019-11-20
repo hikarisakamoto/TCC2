@@ -27,7 +27,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientAddressUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -35,7 +35,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientDeactivatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -43,7 +43,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientEmailUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -51,7 +51,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientHeartRateUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -59,7 +59,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientPhoneUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -67,7 +67,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientPhotoUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -75,7 +75,7 @@ namespace Sakamoto.TCC2.CSU.Patients.Domain.EventHandlers
 
         public Task Handle(PatientRegisteredEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;

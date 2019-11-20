@@ -21,10 +21,9 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.EventHandlers
         }
         // TODO - REMOVE DEPENDENCY FROM JSON CONVERT
 
-
         public Task Handle(MedicalReportAddedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -32,7 +31,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.EventHandlers
 
         public Task Handle(MedicalReportRemovedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -40,7 +39,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.EventHandlers
 
         public Task Handle(MedicalReportWithImageAddedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;

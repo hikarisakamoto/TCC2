@@ -34,7 +34,11 @@
                         @Html.DisplayFor(modelItem => item.AggregateId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Data)
+                        <pre class="prettyprint lang-js">
+                        <code>
+                                @Html.DisplayFor(modelItem => item.Data)
+                            </code>
+                        </pre>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.MessageType)
@@ -52,3 +56,5 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+

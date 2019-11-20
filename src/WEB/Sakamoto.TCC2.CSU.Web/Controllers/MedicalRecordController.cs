@@ -105,7 +105,7 @@ namespace Sakamoto.TCC2.CSU.Web.Controllers
         private async Task<List<PractitionerViewModel>> GetPractitioners()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://sakamoto-csu-practitioner.azurewebsites.net/practitioners");
+                "https://csu-practitioner.azurewebsites.net/practitioners");
 
             var client = _clientFactory.CreateClient();
 

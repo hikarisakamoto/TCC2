@@ -10,7 +10,7 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Domain.Events
             MedicalReportId = medicalReportId;
             PatientId = patientId;
             PractitionerId = practitionerId;
-            AggregateId = medicalReportId;
+            AggregateId = patientId;
         }
 
         public Guid MedicalReportId { get; }

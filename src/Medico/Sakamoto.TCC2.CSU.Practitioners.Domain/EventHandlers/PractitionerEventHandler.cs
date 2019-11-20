@@ -24,7 +24,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers
 
         public Task Handle(PractitionerDeactivatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -32,7 +32,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers
 
         public Task Handle(PractitionerEmailUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -40,7 +40,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers
 
         public Task Handle(PractitionerPhoneUpdatedEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;
@@ -48,7 +48,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Domain.EventHandlers
 
         public Task Handle(PractitionerRegisteredEvent @event, CancellationToken cancellationToken)
         {
-            var data = JsonConvert.SerializeObject(@event);
+            var data = JsonConvert.SerializeObject(@event, Formatting.Indented);
             _eventHandler.SendMessage(new StoredEvent(@event, data, "Sakamoto"));
 
             return Task.CompletedTask;

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Sakamoto.TCC2.CSU.EventStore.Application.Configurations;
 using Sakamoto.TCC2.CSU.EventStore.Application.Interfaces;
 using Sakamoto.TCC2.CSU.EventStore.Application.Repository;
@@ -59,20 +60,19 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options =>
-                {
-                    options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
-                })
+            services.AddMvc(options => options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter()))
+                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.Configure<DatabaseSettings>(
                 Configuration.GetSection(nameof(DatabaseSettings)));
-            services.AddControllers();
+
+            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "CSU - Event Store API", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSU - Event Store API", Version = "v1" });
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

@@ -18,13 +18,13 @@ namespace Sakamoto.TCC2.CSU.EventStore.Application.Controller
 
         // GET
         [HttpGet]
-        [Route("stored-event/{aggregateid:guid}")]
-        public async Task<IActionResult> GetStoredEvent(Guid? aggregateId)
+        [Route("stored-event/{aggregateId:guid}")]
+        public async Task<IActionResult> GetStoredEvent(Guid aggregateId)
         {
             if (aggregateId == null)
                 return NotFound();
 
-            var events = _eventStoreRepository.EventsByAggregate(aggregateId.Value);
+            var events = _eventStoreRepository.EventsByAggregate(aggregateId);
             if (events.Any())
                 return Ok(events);
             return NotFound(events);

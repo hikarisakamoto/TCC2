@@ -28,7 +28,7 @@ namespace Sakamoto.TCC2.CSU.Practitioners.Infrastructure.Data.Repositories
 
         public override Practitioner GetById(Guid id)
         {
-            const string sql = "SELECT * FROM PRACTITIONERS P WHERE P.IDM = @id";
+            const string sql = "SELECT * FROM PRACTITIONERS P WHERE P.ID = @id";
             return Context.Database.GetDbConnection().QueryFirstOrDefault<Practitioner>(sql, new { id });
         }
     }

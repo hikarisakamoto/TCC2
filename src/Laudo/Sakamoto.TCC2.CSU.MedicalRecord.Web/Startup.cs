@@ -59,22 +59,21 @@ namespace Sakamoto.TCC2.CSU.MedicalRecord.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options =>
-                {
-                    options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
-                })
+            services.AddMvc(options => options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter()))
+                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddAutoMapper(typeof(Startup), typeof(DomainToViewModelMapping), typeof(ViewModelToDomainMapping),
                 typeof(DomainToRepository));
 
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "CSU - Medical Report API", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSU - Medical Report API", Version = "v1" });
             });
 
             // Adding MediatR for Domain Events and Notifications
